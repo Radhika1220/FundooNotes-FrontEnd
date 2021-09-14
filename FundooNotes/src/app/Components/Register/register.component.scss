@@ -43,6 +43,7 @@ $color: #1a73e8;
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    margin-right:17px;
 
 a
 {
@@ -61,7 +62,7 @@ a
 }
 .mat-form-field
 {
-   margin-right:13px;
+   width: 95%;
 }
 .password
 {
@@ -74,4 +75,49 @@ a
 }
 .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
     padding:0px 5px;
+}
+.name
+{
+    display: flex;
+    flex-direction: row;
+div
+{
+    margin-right:13px;
+}
+}
+.password
+{
+    @extend .name;
+}
+@media screen and (max-width: 900px) {
+    .imageContainer {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 476px)
+  {
+      .name
+      {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+      }
+  }
+  @media screen and (max-width: 460px){
+    .mat-form-field
+    {
+        width: 100%;
+    }
+}
+@media screen and (max-width:460px)
+{
+    .buttonContainer
+    {
+        margin-right:9px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-right:10px;
+    }
 }
