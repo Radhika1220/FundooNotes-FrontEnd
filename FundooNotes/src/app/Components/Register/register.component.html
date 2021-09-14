@@ -1,28 +1,40 @@
-<div>
-    <mat-card>
+<div class="mainContainer">
+    <mat-card class="mainCard">
         <div>
-            <h4>Fundoo</h4>
-            <span>Create your Fundoo Account</span>
-            <div>
-                <form>
-                    <div>
+            <h4 class="title">
+                <span style="color:#1a73e8">F</span>
+                <span style="color:red">u</span>
+                <span style="color: orange">n</span>
+                <span style="color: blue">d</span>
+                <span style="color:green">o</span>
+                <span style="color:red">o</span>
+                </h4>
+            <span class="sub-title">Create your Fundoo Account</span>
+            <div class="divContainer">
+                <form class="formContainer">
+                    <div class="name">
                         <mat-form-field appearance="outline">
                             <mat-label>First name</mat-label>
                             <input matInput>
                         </mat-form-field>
+
                         <mat-form-field appearance="outline">
                             <mat-label>Last name</mat-label>
                             <input matInput>
                         </mat-form-field>
                     </div>
-                    <div>
-                        <mat-form-field appearance="outline">
+                    <div class="userName">
+                        <mat-form-field appearance="outline"  [style.width.px]=412>
                             <mat-label>Username</mat-label>
+                            <mat-icon matSuffix>.com</mat-icon>
                             <input matInput>
                             <mat-hint>You can use letters,numbers & periods</mat-hint>
                         </mat-form-field>
                     </div>
-                    <div>
+                <div class="emailDiv">
+                    <button mat-button>Use my current email address instead</button>
+                </div>
+                    <div class="password">
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
                             <input matInput>
@@ -32,21 +44,22 @@
                             <input matInput>
                         </mat-form-field>
                     </div>
+                  
                     <section>
-                        <div class="example-button-row">
+                        <div class="buttonContainer">
                             <a mat-button href="https://www.google.com/" target="_blank">Sign in</a>
-                            <button mat-flat-button color="primary">Next</button>
+                            <button mat-flat-button color="primary" class="nextButton">Next</button>
                         </div>
                     </section>
                 </form>
             </div>
         </div>
-        <div>
+        <div class="imageContainer">
             <img src="../assets/Register/signin.jfif" alt="Sign in Image">
-            <pre>
-                One account. All of Google 
+            <p>
+                One account. All of Google<br>
                 working for you.
-            </pre>
+            </p>
         </div>
     </mat-card>
 </div>
