@@ -1,0 +1,62 @@
+$color: #1a73e8;
+.mainContainer
+{
+    display: flex;
+    flex-flow:row;
+    justify-content: center;
+    margin-top: 30px;
+}
+.mainCard
+{
+    width: 35%;
+    margin-top: 30px;
+}
+.mat-label
+{
+    color:$color;
+}
+.title
+{
+    display: flex;
+    justify-content: center;
+}
+.sub-title
+{
+    @extend .title
+}
+.header
+{
+    @extend .title
+}
+.mat-form-field
+{
+width: 90%;
+margin-left: 10px;
+}
+
+.buttonContainer
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-right:17px;
+
+a
+{
+    padding-left: 10px;
+    color:$color;
+}
+}
+
+.nextButton
+{
+    background-color: $color;
+    color:white;
+    margin-right: 13px;
+}
+
+.forgotPassword
+{
+   color: #1a73e8;
+   padding-left: 10px;
+}
