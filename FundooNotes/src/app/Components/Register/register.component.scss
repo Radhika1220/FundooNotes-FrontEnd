@@ -1,0 +1,122 @@
+$color: #1a73e8;
+.mainContainer
+{
+    display: flex;
+    flex-flow:row;
+    justify-content: center;
+    margin-top: 10px;
+}
+.mainCard
+{
+    display: flex;
+    flex-flow:row;
+    margin-top: 30px;
+}
+.title
+{
+    padding-left: 10px;
+    font-size: 20px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
+.sub-title
+{
+    @extend .title
+}
+.divContainer
+{
+    padding:10px;
+}
+
+.imageContainer
+{
+    display:flex;
+    flex-flow: column;
+    text-align: center;
+    justify-content: center;
+ p
+{
+    font-family: 'Roboto';
+}
+}
+.buttonContainer
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-right:17px;
+
+a
+{
+    padding-left: 10px;
+    color:$color;
+}
+}
+
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+    margin-bottom: 70px;
+}
+.nextButton
+{
+    background-color: $color;
+    color:white;
+}
+.mat-form-field 
+{
+   width: 95%;
+}
+.password
+{
+    margin-top: 13px;
+}
+.emailDiv
+{
+    color:$color;   
+    margin-top: 10px;
+}
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    padding:0px 5px;
+}
+.name
+{
+    display: flex;
+    flex-direction: row;
+div
+{
+    margin-right:13px;
+}
+}
+.password
+{
+    @extend .name;
+}
+.show-password
+{
+        margin-top: 10px;
+        margin-left: 10px;    
+}
+@media screen and (max-width: 900px) {
+    .imageContainer {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 476px)
+  {
+      .name
+      {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+      }
+      .mat-form-field
+      {
+          width: 100%;
+      }
+      .buttonContainer
+      {
+          display: flex;
+          justify-content: space-between;
+      }
+  }
+
+
