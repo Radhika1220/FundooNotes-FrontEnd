@@ -19,6 +19,7 @@ $color: #1a73e8;
 {
     display: flex;
     justify-content: center;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
 }
 .sub-title
 {
@@ -59,4 +60,25 @@ a
 {
    color: #1a73e8;
    padding-left: 10px;
+}
+.show-password
+{
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 553px) {
+
+        .buttonContainer
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        .mainCard
+        {
+         margin:0px;
+         padding:0px;
+         transition: none;
+         box-shadow: none;
+         width:90%;
+        }
 }

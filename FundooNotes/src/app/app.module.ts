@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCheckboxModule
 
   ],
   providers: [

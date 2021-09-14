@@ -60,7 +60,7 @@ a
     background-color: $color;
     color:white;
 }
-.mat-form-field
+.mat-form-field 
 {
    width: 95%;
 }
@@ -89,6 +89,11 @@ div
 {
     @extend .name;
 }
+.show-password
+{
+        margin-top: 10px;
+        margin-left: 10px;    
+}
 @media screen and (max-width: 900px) {
     .imageContainer {
       display: none;
@@ -103,21 +108,15 @@ div
        flex-direction: row;
        flex-wrap: wrap;
       }
+      .mat-form-field
+      {
+          width: 100%;
+      }
+      .buttonContainer
+      {
+          display: flex;
+          justify-content: space-between;
+      }
   }
-  @media screen and (max-width: 460px){
-    .mat-form-field
-    {
-        width: 100%;
-    }
-}
-@media screen and (max-width:460px)
-{
-    .buttonContainer
-    {
-        margin-right:9px;
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-        margin-right:10px;
-    }
-}
+
+
