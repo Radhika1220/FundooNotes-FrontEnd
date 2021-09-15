@@ -10,24 +10,25 @@ $CommonColor:#1a73e8;
     margin-left: auto;
     margin-right: auto;
 }
+.formContent{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
 span{
     font-size: 25px;
     font-weight: 600;
-}
-header{
-    margin-top: 30px;
-    margin-left: 10px;
 }
 h1{
     font-size: 30px;
     margin-top: 20px;
     margin-left: 10px;
 }
-.formContent{
-    display: flex;
-    flex-direction: column;
-    width: 65%;
+header{
+    margin-top: 30px;
+    margin-left: 10px;
 }
+
 .input-div{
     display: flex;
     margin-top: 10px;
@@ -55,7 +56,7 @@ mat-form-field{
 }
 .hint{
     margin-left: 20px;
-    margin-top: -15px;
+    margin-top: -5px;
     width: 70%;
     margin-bottom: 20px;
 }
@@ -95,14 +96,14 @@ mat-icon{
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
     margin-top: -10px;
 }
-::ng-deep .mat-form-field-suffix {
-     position:unset !important; 
-}
 .password{
     padding-bottom: 0px !important;
 }
 .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: none;
+}
+::ng-deep .mat-form-field-suffix {
+    position:unset !important; 
 }
 @media screen and (max-width:900px) {
     .image-div{
