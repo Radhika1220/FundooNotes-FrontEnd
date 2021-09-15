@@ -47,7 +47,10 @@ a
     color:$color;
 }
 }
-
+.hint
+{
+    padding-top: 10px;
+}
 .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
     margin-bottom: 70px;
 }
@@ -71,6 +74,10 @@ a
 }
 .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
     padding:0px 5px;
+}
+.userName
+{
+    margin-top:10px;
 }
 .name
 {
@@ -97,11 +104,13 @@ div
     .input
     {
         width: 300px;
+        padding-bottom: 12px;
     }
     .mainContainer
     {
         min-width: 200px;
     }
+
   }
 
   @media screen and (max-width: 600px)
@@ -125,6 +134,5 @@ div
           margin-left:5px;
           transition: none !important;
           box-shadow: none !important;
-      }
-      
+      }      
   }
