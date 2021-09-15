@@ -4,13 +4,12 @@ $color: #1a73e8;
     display: flex;
     flex-flow:row;
     justify-content: center;
-    margin-top: 10px;
 }
 .mainCard
 {
     display: flex;
     flex-flow:row;
-    margin-top: 30px;
+    margin-top:30px;
 }
 .title
 {
@@ -42,9 +41,6 @@ $color: #1a73e8;
 {
     display: flex;
     justify-content: space-between;
-    margin-top: 50px;
-    margin-right:17px;
-
 a
 {
     padding-left: 10px;
@@ -60,7 +56,7 @@ a
     background-color: $color;
     color:white;
 }
-.mat-form-field 
+.input 
 {
    width: 95%;
 }
@@ -98,9 +94,17 @@ div
     .imageContainer {
       display: none;
     }
+    .input
+    {
+        width: 300px;
+    }
+    .mainContainer
+    {
+        min-width: 200px;
+    }
   }
 
-  @media screen and (max-width: 476px)
+  @media screen and (max-width: 600px)
   {
       .name
       {
@@ -108,15 +112,19 @@ div
        flex-direction: row;
        flex-wrap: wrap;
       }
-      .mat-form-field
-      {
-          width: 100%;
-      }
       .buttonContainer
       {
           display: flex;
           justify-content: space-between;
       }
+      .mainCard
+      {
+          min-width: 200px;
+          padding:0px;
+          margin-right: 5px;
+          margin-left:5px;
+          transition: none !important;
+          box-shadow: none !important;
+      }
+      
   }
-
-
