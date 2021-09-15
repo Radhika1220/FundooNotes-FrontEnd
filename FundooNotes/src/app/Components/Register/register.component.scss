@@ -1,138 +1,138 @@
-$color: #1a73e8;
-.mainContainer
-{
+$CommonColor:#1a73e8;
+.mainContainer{
     display: flex;
-    flex-flow:row;
+    align-items: center;
     justify-content: center;
+    padding: 48px 40px 36px;
+    width: 50%;
+    position: relative;
+    min-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.mainCard
-{
+span{
+    font-size: 25px;
+    font-weight: 600;
+}
+header{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+h1{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.formContent{
     display: flex;
-    flex-flow:row;
-    margin-top:30px;
+    flex-direction: column;
+    width: 65%;
 }
-.title
-{
-    padding-left: 10px;
-    font-size: 20px;
-    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+.input-div{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 0px;
 }
-.sub-title
-{
-    @extend .title
+mat-form-field{
+    width: 50%;
+    margin-right: 10px;
 }
-.divContainer
-{
-    padding:10px;
+.email{
+    width: 99%;
 }
 
-.imageContainer
-{
-    display:flex;
-    flex-flow: column;
-    text-align: center;
-    justify-content: center;
- p
-{
-    font-family: 'Roboto';
+.image-div{
+    margin-left: 30px; 
 }
-}
-.buttonContainer
-{
+.nextDiv{
     display: flex;
     justify-content: space-between;
-a
-{
-    padding-left: 10px;
-    color:$color;
+    flex-flow: row-reverse;
+    margin-left: 0px;
+    margin-top: 50px;
+    margin-bottom: 25px;
 }
+.hint{
+    margin-left: 20px;
+    margin-top: -15px;
+    width: 70%;
+    margin-bottom: 20px;
 }
-.hint
-{
-    padding-top: 10px;
+.Signin{
+    font-family: "Google Sans",Arial,sans-serif;
+    font-size: 14px;
+    color: $CommonColor;
+    font-weight: bolder;
+    &:hover{
+            color: #174ea6;
+    }
+  
 }
-.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
-    margin-bottom: 70px;
+.emailId{
+    @extend .Signin
 }
-.nextButton
-{
-    background-color: $color;
-    color:white;
+.next{
+    background-color: $CommonColor;
+    color: white;
+    width: 20%;
 }
-.input 
-{
-   width: 95%;
+p{
+    text-align: center;
+    font-size: 16px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    width: 70%;
 }
-.password
-{
-    margin-top: 13px;
-}
-.emailDiv
-{
-    color:$color;   
-    margin-top: 10px;
-}
-.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
-    padding:0px 5px;
-}
-.userName
-{
-    margin-top:10px;
-}
-.name
-{
+.para{
     display: flex;
-    flex-direction: row;
-div
-{
-    margin-right:13px;
+    justify-content: center;
 }
+mat-hint{
+    font-size: 14px;
 }
-.password
-{
-    @extend .name;
+mat-icon{
+    font-size: 18px;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    margin-top: -10px;
 }
-.show-password
-{
-        margin-top: 10px;
-        margin-left: 10px;    
+::ng-deep .mat-form-field-suffix {
+     position:unset !important; 
 }
-@media screen and (max-width: 900px) {
-    .imageContainer {
-      display: none;
+.password{
+    padding-bottom: 0px !important;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+@media screen and (max-width:900px) {
+    .image-div{
+        display: none;
     }
-    .input
-    {
-        width: 300px;
-        padding-bottom: 12px;
+    .mainContainer{
+        justify-content: unset;
+        min-width: 450px;   
     }
-    .mainContainer
-    {
-        min-width: 200px;
+    .formContent{
+        width:100%;
     }
 
-  }
-
-  @media screen and (max-width: 600px)
-  {
-      .name
-      {
-       display: flex;
-       flex-direction: row;
-       flex-wrap: wrap;
-      }
-      .buttonContainer
-      {
-          display: flex;
-          justify-content: space-between;
-      }
-      .mainCard
-      {
-          min-width: 200px;
-          padding:0px;
-          margin-right: 5px;
-          margin-left:5px;
-          transition: none !important;
-          box-shadow: none !important;
-      }      
-  }
+}
+@media screen and (max-width:600px) {
+    .mainContainer{
+            padding: 0px;
+    }
+    .input-div{
+        flex-wrap: wrap;
+    }
+    mat-form-field{
+         width: 100%;
+    }
+    mat-card {
+        transition: none !important;
+        box-shadow: none !important;
+    }
+    .nextDiv{
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+}
