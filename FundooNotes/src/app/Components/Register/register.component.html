@@ -48,7 +48,8 @@
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                       <mat-label>Confirm</mat-label>
-                      <input matInput [type]="hide? 'password' : 'text'">
+                      <mat-error *ngIf="RegisterForm.hasError('required','confirmPassword')">password is required</mat-error>
+                      <input matInput [type]="hide? 'password' : 'text'" formControlName="confirmPassword">
 
                     </mat-form-field>
             </div>
@@ -59,7 +60,7 @@
                 <mat-checkbox (change)="hide=!hide">Show Password</mat-checkbox>
             </div>
             <div class="nextDiv">
-                <button mat-flat-button class="next">Next</button>
+                <button mat-flat-button class="next" (click)="Register()">Register</button>
                 <a mat-button href="/Login">Sign in</a>
             </div>
         </form>
