@@ -17,28 +17,32 @@
             <h3>Use your Fundoo Account</h3>
         </div>
         <div>
-            <form class="formContainer">
+            <form class="formContainer" [formGroup]="LoginForm">
                 <div class="RowContainer">
                     <div class=emailId>
                     <mat-form-field appearance="outline">
                         <mat-label>Email Id</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="email">
+                        <mat-error *ngIf="LoginForm.hasError('required','email')">Email Id is required</mat-error>
+                        <mat-error *ngIf="LoginForm.hasError('email','email')">Invalid EmailId</mat-error>
                     </mat-form-field>
                     </div>
                     <div class=password>
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input matInput>
+                        <input matInput [type]="hide? 'password' : 'text'" formControlName="password">
+                        <mat-error *ngIf="LoginForm.hasError('required','password')">Password is required</mat-error>
+                    <mat-error *ngIf="LoginForm.hasError('pattern','password')">Password must be at least 6 characters</mat-error>
                     </mat-form-field>
                     </div>
                     <div>
                         <a mat-flat-button href="https://www.google.com/" target="_blank" class="forgotPassword">Forget Password?</a>
                     </div>
                     <div class="show-password">
-                        <mat-checkbox>Show Password</mat-checkbox>
+                        <mat-checkbox (change)="hide=!hide">Show Password</mat-checkbox>
                     </div>
                     <div class="buttonContainer">
-                        <a mat-button href="/Register" target="_blank">Create Account</a>
+                        <a mat-button href="/Register">Create Account</a>
                         <button mat-flat-button color="primary" class=nextButton>Next</button>
                     </div>
                 </div>
