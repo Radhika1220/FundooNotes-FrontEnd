@@ -27,10 +27,17 @@ export class ForgotPasswordComponent implements OnInit {
   }
   ForgotPassword()
   {
+   
     this.userService.ForgotPassword(this.ForgotForm.value)
     .subscribe((result:any)=>
     {
+      const param=
+      {
+        email:result.email,
+        token:result.data
+      }
       console.log(result);
+      localStorage.setItem('forgot-password',JSON.stringify(param));
       this.openSnackBar(result.message,'');
    }, (error:HttpErrorResponse) => { 
      if(!error.error.status){            

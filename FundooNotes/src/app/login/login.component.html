@@ -33,6 +33,8 @@
                         <input matInput [type]="hide? 'password' : 'text'" formControlName="password">
                         <mat-error *ngIf="LoginForm.hasError('required','password')">Password is required</mat-error>
                     <mat-error *ngIf="LoginForm.hasError('pattern','password')">Password must be at least 6 characters</mat-error>
+                    
+                    <!-- <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
                     </mat-form-field>
                     </div>
                     <div>

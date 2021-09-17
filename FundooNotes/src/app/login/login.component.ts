@@ -39,10 +39,6 @@ export class LoginComponent implements OnInit {
          Email:result.userData.email,
          Token:result.data
        }
-       if(localStorage.getItem('FundooNotes')!=null)
-       {
-         localStorage.removeItem('FundooNotes');
-       }
        localStorage.setItem('FundooNotes',JSON.stringify(params));
     },
       (error:HttpErrorResponse) => { 
