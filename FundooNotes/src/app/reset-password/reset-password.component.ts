@@ -31,7 +31,9 @@ export class ResetPasswordComponent implements OnInit {
   { 
     var d=localStorage.getItem('forgot-password');
   
-   this.userService.ResetPassword(this.ResetForm.value)
+    var email=JSON.parse(d!).email;
+  
+   this.userService.ResetPassword(email,this.ResetForm.value)
    .subscribe((result : any)=>
    {
       console.log(result);

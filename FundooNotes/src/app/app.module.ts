@@ -17,7 +17,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -40,8 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatSnackBarModule,
-    MatIconModule
+    MatSnackBarModule
   ],
   providers: [
   ],

@@ -38,10 +38,10 @@ export class UserServiceService {
   }
 
 
-ResetPassword(data:any)
+ResetPassword(email:string,data:any)
 {
   const params={
-    EmailId:data.email,
+    EmailId:email,
     NewPassword:data.password
   }
   return this.httpService.put(`${environment.baseUrl}/api/resetPassword`,params);
