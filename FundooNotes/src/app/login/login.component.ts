@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   LoginForm!:FormGroup;
   hide=true;
-  constructor() { }
+  constructor( private userService:UserServiceService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.LoginForm=new FormGroup(
@@ -19,5 +23,33 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  Login()
+  {
+    this.userService.Login(this.LoginForm.value)
+    .subscribe((result : any)=>
+    {
+       console.log(result);
+       this.openSnackBar(result.message , '');
+    },
+      (error:HttpErrorResponse) => { 
+      if(!error.error.status)
+      {            
+         this.openSnackBar(error.error.message , '');
+      }
+      else
+      {
+        this.openSnackBar('Unsuccessful , Please Try again!!!' , '');
+      }
+      
+   })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+       duration: 5000
+    }); 
+ } 
 }
+
   
