@@ -38,7 +38,7 @@ export class ForgotPasswordComponent implements OnInit {
      }
      else
      {
-      this.openSnackBar(' Please Enter EmailId!' , '');
+      this.openSnackBar('Please Enter EmailId!' , '');
      }
     })
  }

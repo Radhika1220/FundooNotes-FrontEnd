@@ -31,6 +31,19 @@ export class LoginComponent implements OnInit {
     {
        console.log(result);
        this.openSnackBar(result.message , '');
+       var params=
+       {
+         key:result.userData.userId,
+         FirstName:result.userData.firstName,
+         LastName:result.userData.lastName,
+         Email:result.userData.email,
+         Token:result.data
+       }
+       if(localStorage.getItem('FundooNotes')!=null)
+       {
+         localStorage.removeItem('FundooNotes');
+       }
+       localStorage.setItem('FundooNotes',JSON.stringify(params));
     },
       (error:HttpErrorResponse) => { 
       if(!error.error.status)
