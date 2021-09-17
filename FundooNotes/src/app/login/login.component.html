@@ -36,14 +36,14 @@
                     </mat-form-field>
                     </div>
                     <div>
-                        <a mat-flat-button href="https://www.google.com/" target="_blank" class="forgotPassword">Forget Password?</a>
+                        <a mat-flat-button href="/forgot-password" class="forgotPassword">Forget Password?</a>
                     </div>
                     <div class="show-password">
                         <mat-checkbox (change)="hide=!hide">Show Password</mat-checkbox>
                     </div>
                     <div class="buttonContainer">
                         <a mat-button href="/Register">Create Account</a>
-                        <button mat-flat-button color="primary" class=nextButton>Next</button>
+                        <button mat-flat-button color="primary" class=nextButton (click)=" Login()">Next</button>
                     </div>
                 </div>
             </form>

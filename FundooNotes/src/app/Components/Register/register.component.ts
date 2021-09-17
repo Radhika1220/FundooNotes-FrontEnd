@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router} from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -31,22 +32,30 @@ export class RegisterComponent implements OnInit {
   }
   Register()
   {
-    // console.log("register method working.....");
     this.userService.Register(this.RegisterForm.value)
-    .subscribe((result:any)=>
+    .subscribe((result : any)=>
     {
-        console.log(result);
-        this.openSnackBar(result.message,'');
-        if(result.status==true)
-        {
+       console.log(result);
+       this.openSnackBar(result.message , '');
+       if(result.status==true)
+       {
           this.router.navigateByUrl('/Login');
-        }
-    });
+       } 
+      
+    },
+    (error:HttpErrorResponse) => { 
+      if(!error.error.status){            
+        this.openSnackBar(error.error.message , '');
+      }
+      else
+      {
+        this.openSnackBar('Registration Unsuccessful , Try again!' , '');
+      }
+    })
   }
-
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-       duration: 5000
+       duration: 2000
     }); 
  } 
 }
