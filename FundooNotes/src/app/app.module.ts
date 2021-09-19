@@ -17,7 +17,13 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RegisterComponent,
     LoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+MatToolbarModule,
+MatDividerModule,
+MatSidenavModule,
+MatListModule,
+MatMenuModule
   ],
   providers: [
   ],

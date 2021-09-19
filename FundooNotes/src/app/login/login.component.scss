@@ -22,11 +22,13 @@ $color: #1a73e8;
 }
 .sub-title
 {
-    @extend .title
+    @extend .title;
+    font-size:15px;
 }
 .header
 {
-    @extend .title
+    @extend .title;
+    font-size:22px;
 }
 .mat-form-field
 {
