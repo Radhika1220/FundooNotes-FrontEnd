@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+import { NotesComponent } from './notes/notes.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [
@@ -12,12 +13,15 @@ const routes: Routes = [
   {path:'Login',component:LoginComponent},
   {path:`reset-password/${token}`,component:ResetPasswordComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
-  {path:'dash-board',component:DashBoardComponent}
+  {path:'dash-board',component:DashBoardComponent},
+  {path:'notes',component:NotesComponent}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

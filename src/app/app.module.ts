@@ -24,6 +24,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
+import { NotesComponent } from './notes/notes.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 @NgModule({
   declarations: [
@@ -32,10 +35,11 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    NotesComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
@@ -52,7 +56,9 @@ MatToolbarModule,
 MatDividerModule,
 MatSidenavModule,
 MatListModule,
-MatMenuModule
+MatMenuModule,
+MatButtonToggleModule
+
   ],
   providers: [
   ],

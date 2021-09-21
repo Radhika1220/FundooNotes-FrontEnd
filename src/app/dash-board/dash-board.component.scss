@@ -8,7 +8,9 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
-
+mat-sidenav-content[_ngcontent-aqv-c132] {
+    padding-left: 0px !important; 
+}
 .material-icons {
     font-size:30px;
 }
@@ -115,6 +117,7 @@ mat-icon,.material-icons
 }
 .sideNavContainer{
     min-height: 500px;
+    background-color: white;
 }
 
 
@@ -128,9 +131,9 @@ mat-sidenav:not(.mat-drawer-opened) {
     width: 250px;
     border-right: 0;
   }
-  mat-sidenav-content{
-      padding-left: 100px;
-  }
+//   mat-sidenav-content{
+//       padding-left: 100px;
+//   }
   .sideNavLogo
   {
       padding:0px;
@@ -138,7 +141,7 @@ mat-sidenav:not(.mat-drawer-opened) {
   }
   mat-list-item:hover
   {
-      background-color: #FEEFC3;
+      background-color: #FEEFC3 !important;
       border-bottom-right-radius: 30px;
       border-top-right-radius: 30px;
   }
