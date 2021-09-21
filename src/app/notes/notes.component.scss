@@ -1,35 +1,35 @@
 $roboto-slab: 'Roboto', san-serif;  
 mat-card
 {
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     margin: 40px auto;
-    padding: 5px !important;
+    padding: 8px !important;
+    padding-bottom: 0px !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    border-radius: 10px;
     min-width: fit-content;
 }
-.row
+.divContent
 {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding:10px 10px 0px;
+    padding:5px 15px 0px 5px;
     color: rgb(70, 68, 68);
     font-family: $roboto-slab;
 }
-// mat-sidenav-content[_ngcontent-syl-c132] {
-//      padding-left: -10px;
-// }
 ::ng-deep .mat-form-field-underline{
     display: none;
 }
 .material-icons
 {
-    background: white;
+
     color: rgb(70, 68, 68);
     margin-right: 10px;
+    cursor: pointer;
 }
 
 input{
@@ -44,6 +44,8 @@ input{
 }
 .column
 {
+    display: flex;
+    flex-flow: column;
     width: 100%;
 }
 textarea {
@@ -61,13 +63,69 @@ textarea{
     }
 }
 mat-card{
-    max-height: 500px;
+    max-height: 600px;
     overflow-y: hidden;
     overflow-x: hidden;
 }
-.icon-bars{
+.icon{
+    display: flex;
+    justify-content: space-evenly;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    min-width: 70%;
+}
+
+.button
+{
+background: none;
+border: none;
+.material-icons
+{
+color: rgb(207, 205, 205);
+}
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    padding: 0px;
+    min-height: 20px !important;
+}
+tes-icon-menu {
+    min-height: 20px !important;
+}
+.space
+{
     display: flex;
     justify-content: space-between;
-    padding-right: 10px;
-    min-width: fit-content;
+    width: 100%;
+
+}
+.h4
+{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+.color
+{
+    color: rgb(180, 176, 176);
+}
+.mat-menu-item {
+    line-height: 12px !important;
+}
+.divContent 
+{ 
+    .mat-menu-item{
+    border-radius: 50%;
+    border: 1px solid rgb(189, 186, 186);
+    width: -15px;
+    height: 30px;
+    max-width: -1px !important;
+    max-height: 30px !important;
+}
+}
+.span
+{
+    max-width: -1px !important;
+    max-height: 30px !important;
 }

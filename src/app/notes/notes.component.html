@@ -1,32 +1,91 @@
-
 <mat-card *ngIf="toggle">
-    <div class="row" (click)="toggle=!toggle">
-        <h3 >Take a note ..</h3>
+    <div class="divContent" (click)="toggle=!toggle">
+        <h3>Take a note ....</h3>
         <div>
             <i class="material-icons">check_box</i>
             <i class="material-icons">insert_photo</i>
         </div>
     </div>
 </mat-card>
-<mat-card *ngIf="!toggle">
+<mat-card *ngIf="!toggle" id="matcard">
     <div class="column" [formGroup]="NoteForm">
-    <div class="row">
-        <input placeholder="Title" class="notes" formControlName ="Title">
-        <i class="material-icons">push_pin</i>
+        <div class="divContent">
+            <input placeholder="Title" class="notes" formControlName='Title'  id="title">
+            <i class="material-icons" matTooltip="Pin">push_pin</i>
+        </div>
+        <div class="divContent">
+            <textarea placeholder="Take a note .." id="textarea" (keyup)="Resize()"
+                formControlName='Description' id="textarea"></textarea>
+        </div>
+        <div class="divContent">
+        <div class="icon" style="margin-top: 12px; margin-bottom: 12px;">
+            <i class="material-icons" (click)="ReminderOption()"
+                [matMenuTriggerFor]="remindermenu" matTooltip="Remind me">notification_important</i>
+            <i class="material-icons"  matTooltip="Collaborator">person_add_alt_1</i>
+            <i class="material-icons"  [matMenuTriggerFor]="colormenu" matTooltip="Change Color">color_lens</i>
+            <i class="material-icons" matTooltip="Add Image">image</i>
+            <i class="material-icons" matTooltip="Archive">archive</i>
+            <i class="material-icons" [matMenuTriggerFor]="moremenu" (click)="CheckContent()"  matTooltip="More">more_vert</i>
+        </div>
+        <button mat-button class="MovetoNext" (click)="toggle=!toggle;CreateNote()" style="font-size: 17px;"
+        matTooltip="" style="padding-left: 10px; padding-right: 10px;">Close</button>
+        </div>
     </div>
-    <div class="row">
-        <textarea placeholder="Take a note .."  id="textarea" (keyup)="Resize()" formControlName ="Description"></textarea>
-    </div>
-    <div class="icon-bars">
-        <i class="material-icons">notification_important</i>
-        <i class="material-icons">person_add_alt_1</i>
-        <i class="material-icons">color_lens</i>
-        <i class="material-icons">image</i>
-        <i class="material-icons">archive</i>
-        <i class="material-icons">more_vert</i>
-        <i class="material-icons">undo</i>
-        <i class="material-icons">redo</i>
-        <p  (click)="CreateNote()">Close</p>
-      </div>
+    <mat-menu #moremenu="matMenu" class="account-menu">
+        <button mat-menu-item style="font-size: 17px;">Add Label</button>
+        <button mat-menu-item style="font-size: 17px;" *ngIf="expand">Delete Note</button>
+    </mat-menu>
+    <mat-menu #remindermenu="matMenu">
+
+        <div mat-menu-item class="space h4">
+            <h4 class="h4">Reminder:</h4>
+        </div>
+        <div mat-menu-item class="space">
+            <p>Later Today</p>
+                <p class="color">10:00 PM</p>
+        </div>
+        <div mat-menu-item class="space">
+            <p>Tomorrow</p>
+            <p class="color">8:00 AM</p>
+        </div>
+        <div mat-menu-item class="space">
+            <p>Next week</p>
+            <p class="color">Wed, 8:00 PM</p>
+        </div>
+        <div mat-menu-item  class="space">
+            <i class="material-icons" style="font-size:17px;">access_time</i>
+            <p class="clock">Pick date and Time</p>
+        </div>
+    </mat-menu>
+
+<mat-menu #colormenu="matMenu" yPosition="above">
+  <div class="column">
+   <div class="divContent">
+       <span mat-menu-item style="background-color: white;" (click)="CardColor('white')" matTooltip="Default">
+        <i class="material-icons" *ngIf="color=='white'">check</i></span>
+       <span mat-menu-item style="background-color: #F28B82;"  (click)="CardColor('#F28B82')" matTooltip="Red">
+        <i class="material-icons" *ngIf="color=='#F28B82'" style="background-color: #F28B82;">check</i></span>
+       <span mat-menu-item style="background-color: #FBBC04; border: black;"  (click)="CardColor('#FBBC04')" matTooltip="Orange">
+        <i class="material-icons" *ngIf="color=='#FBBC04'">check</i></span>
+       <span mat-menu-item style="background-color: #FFF475;" (click)="CardColor('#FFF475')" matTooltip="Yellow">
+        <i class="material-icons" *ngIf="color=='#FFF475'">check</i></span>
+   </div>
+   <div class="divContent">
+    <span mat-menu-item style="background-color: #A7FFEB;"  (click)="CardColor('#A7FFEB')" matTooltip="Teal">
+        <i class="material-icons" *ngIf="color=='#A7FFEB'">check</i></span>
+    <span mat-menu-item style="background-color: #CCFF90;" (click)="CardColor('#CCFF90')" matTooltip="Green">
+        <i class="material-icons" *ngIf="color=='#CCFF90'">check</i></span>
+    <span mat-menu-item style="background-color: #CBF0F8; border: black;"(click)="CardColor('#CBF0F8')" matTooltip="Blue">
+        <i class="material-icons" *ngIf="color=='#CBF0F8'">check</i></span>
+    <span mat-menu-item style="background-color: #AECBFA;" (click)="CardColor('#AECBFA')" matTooltip="Dark Blue">
+        <i class="material-icons" *ngIf="color=='#AECBFA'">check</i></span>
 </div>
+<div class="divContent">
+    <span mat-menu-item style="background-color: #FDCFE8;" (click)="CardColor('#FDCFE8')" matTooltip="Pink"></span>
+    <span mat-menu-item style="background-color: #D7AEFB;" (click)="CardColor('#D7AEFB')" matTooltip="Purple"></span>
+    <span mat-menu-item style="background-color: #E6C9A8; border: black;" (click)="CardColor('#E6C9A8')" matTooltip="Brown"></span>
+    <span mat-menu-item style="background-color: #E8EAED;" (click)="CardColor('#E8EAED')" matTooltip="Gray"></span>
+</div>
+  </div>
+</mat-menu>
 </mat-card>
