@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './Components/Register/register.component';
-import { LoginComponent } from './login/login.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { DashBoardComponent } from './dash-board/dash-board.component';
-import { NotesComponent } from './notes/notes.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { DashBoardComponent } from './Components/dash-board/dash-board.component';
+import { NotesComponent } from './Components/notes/notes.component';
 import { CollaboratorDialogBoxComponent } from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
+import { GetNoteComponent } from './get-note/get-note.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'dash-board',component:DashBoardComponent},
   {path:'notes',component:NotesComponent},
-  {path:'collaborator',component:CollaboratorDialogBoxComponent}
+  {path:'collaborator',component:CollaboratorDialogBoxComponent},
+  {path:'get-notes',component:GetNoteComponent}
 
 ];
 

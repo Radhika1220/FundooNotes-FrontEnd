@@ -12,7 +12,7 @@
                 <mat-form-field appearance="outline">
                     <mat-icon matPrefix class="search-icon">search</mat-icon>
                     <input matInput placeholder="  Search">
-                    <i class="material-icons" matSuffix>clear</i>
+                    <i class="material-icons" matSuffix>close</i>
                 </mat-form-field>
             </div>
             <div class="menu-box">
@@ -26,10 +26,11 @@
                      <p >{{userDetails.FirstName}} {{userDetails.LastName}}</p>
                     <p class="email ">{{userDetails.Email}}</p>
                     <mat-divider style="width: 100%; margin: 0px; padding: 0px;"></mat-divider>
-                    <button mat-raised-button >Logout</button>
+                    <button mat-raised-button>Logout</button>
                 </mat-menu>
             </div>
         </mat-toolbar>
+        <mat-divider></mat-divider>
         <mat-sidenav-container class="sideNavContainer">
             <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseover)='opened=true'>
                 <mat-nav-list>
@@ -57,6 +58,7 @@
             </mat-sidenav>
         <mat-sidenav-content align="center">
             <app-notes align="center"></app-notes>
+            <app-get-note></app-get-note>
         </mat-sidenav-content>
     </mat-sidenav-container>
     </div>

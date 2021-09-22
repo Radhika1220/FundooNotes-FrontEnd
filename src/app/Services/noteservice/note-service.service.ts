@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpServiceService } from '../HttpService/http-service.service';
-
 @Injectable({
   providedIn: 'root'
 })
 export class NoteServiceService {
-  // user = JSON.parse(localStorage.getItem('FundooNotes')!);
   constructor(
     private httpService:HttpServiceService
   ) { }
@@ -27,4 +25,14 @@ export class NoteServiceService {
       headers: {Authorization:"Bearer "+user.Token}
     });
   }
+
+  GetNotes()
+  {
+    var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+    return this.httpService.get(`${environment.baseUrl}/api/GetNotes?userId=${user.key}`,true,
+    {
+      headers: {Authorization:"Bearer "+user.Token}
+    });
+  }
+
 }

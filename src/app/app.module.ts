@@ -8,25 +8,27 @@ import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Components/login/login.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { DashBoardComponent } from './dash-board/dash-board.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { DashBoardComponent } from './Components/dash-board/dash-board.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-import { NotesComponent } from './notes/notes.component';
+import { NotesComponent } from './Components/notes/notes.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CollaboratorDialogBoxComponent} from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
+import { GetNoteComponent } from './get-note/get-note.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import {CollaboratorDialogBoxComponent} from './Components/collaborator-dialog-b
     DashBoardComponent,
     NotesComponent,
     CollaboratorDialogBoxComponent,
+    GetNoteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -60,7 +63,6 @@ MatListModule,
 MatMenuModule,
 MatButtonToggleModule,
 MatDialogModule
-
   ],
   providers: [
   ],

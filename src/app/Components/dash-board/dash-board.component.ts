@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
@@ -8,16 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class DashBoardComponent implements OnInit {
   isGrid=false;
   opened: boolean = true;
-  constructor() { }
+  // SearchField:any;
+   constructor() { }
   userDetails:any;
   ngOnInit(): void {
      this.userDetails = JSON.parse(localStorage.getItem('FundooNotes')!);
   }
+  // ClearSearchField() 
+  // {
+  //   this.SearchField = '';
+  // }
   //   Logout(){
-  //   var user = JSON.parse(localStorage.getItem("FundooUser")!);
-  //     if(user != null){
-  //         localStorage.removeItem("FundooUser");
-  //         this.route.navigateByUrl('/login');
+  //     if(this.userDetails!= null){
+  //         localStorage.removeItem("FundooNotes");
+  //         this.router.navigateByUrl('/Login');
   //     }
   // }
 }
