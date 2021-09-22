@@ -9,10 +9,12 @@
 </mat-card>
 <mat-card *ngIf="!toggle" id="matcard">
     <div class="column" [formGroup]="NoteForm">
-        <div class="divContent">
+        <div class="divContent" (click)="PinNote()">
             <input placeholder="Title" class="notes" formControlName='Title'  id="title">
-            <i class="material-icons" matTooltip="Pin">push_pin</i>
+            <i class="material-icons" matTooltip="Pin" *ngIf="!pinned">push_pin</i>
+         <i class="material-icons" matTooltip="Pin" *ngIf="pinned"  style="color:gray">push_pin</i>
         </div>
+
         <div class="divContent">
             <textarea placeholder="Take a note .." id="textarea" (keyup)="Resize()"
                 formControlName='Description' id="textarea"></textarea>
@@ -21,10 +23,11 @@
         <div class="icon" style="margin-top: 12px; margin-bottom: 12px;">
             <i class="material-icons" (click)="ReminderOption()"
                 [matMenuTriggerFor]="remindermenu" matTooltip="Remind me">notification_important</i>
-            <i class="material-icons"  matTooltip="Collaborator">person_add_alt_1</i>
+            <i class="material-icons"  matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
             <i class="material-icons"  [matMenuTriggerFor]="colormenu" matTooltip="Change Color">color_lens</i>
             <i class="material-icons" matTooltip="Add Image">image</i>
-            <i class="material-icons" matTooltip="Archive">archive</i>
+            <i class="material-icons" matTooltip="Archive"  *ngIf="!archive" (click)="ArchiveNote()">archive</i>
+            <i class="material-icons" matTooltip="Archive"  *ngIf="archive" (click)="ArchiveNote()">archive</i>
             <i class="material-icons" [matMenuTriggerFor]="moremenu" (click)="CheckContent()"  matTooltip="More">more_vert</i>
         </div>
         <button mat-button class="MovetoNext" (click)="toggle=!toggle;CreateNote()" style="font-size: 17px;"

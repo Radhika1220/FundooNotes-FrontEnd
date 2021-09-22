@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CollaboratorDialogBoxComponent } from 'src/app/Components/collaborator-dialog-box/collaborator-dialog-box.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -11,12 +13,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class NotesComponent implements OnInit {
   NoteForm!:FormGroup
   toggle:boolean=true;
+  pinned:boolean = false;
+  archive:boolean=false;
   create=false;
   expand:boolean=false;
 color:string="";
   constructor(
     private noteService:NoteServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog:MatDialog
   ){}
 
   ngOnInit(): void {
@@ -57,6 +62,16 @@ color:string="";
     }
     );
   }
+  
+openDialog()
+{
+  let dialogRef =this.dialog.open(CollaboratorDialogBoxComponent);
+  dialogRef.afterClosed().subscribe((result: any)=>
+    {
+      console.log( `Dialog res: ${result}`);
+    });
+}
+
   Resize(){
     var textArea = document.getElementById("textarea")!      
     textArea.style.height = 'auto';
@@ -87,5 +102,26 @@ else{
 ReminderOption()
 {
  console.log("reminder"); 
+}
+
+PinNote()
+{
+  this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
+      duration: 5000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center'
+    });
+    this.pinned=!(this.pinned);
+}
+
+
+ArchiveNote()
+{
+  this.snackBar.open(`${this.archive?'Note UnArchived':'Note Archived'}`, '', {
+      duration: 5000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center'
+    });
+    this.archive=!(this.archive);
 }
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './Components/Register/register.component';
@@ -26,8 +25,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { NotesComponent } from './notes/notes.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {CollaboratorDialogBoxComponent} from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +37,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ForgotPasswordComponent,
     DashBoardComponent,
     NotesComponent,
+    CollaboratorDialogBoxComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -58,7 +58,8 @@ MatDividerModule,
 MatSidenavModule,
 MatListModule,
 MatMenuModule,
-MatButtonToggleModule
+MatButtonToggleModule,
+MatDialogModule
 
   ],
   providers: [

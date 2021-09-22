@@ -6,7 +6,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { NotesComponent } from './notes/notes.component';
-
+import { CollaboratorDialogBoxComponent } from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [
@@ -15,7 +15,8 @@ const routes: Routes = [
   {path:`reset-password/${token}`,component:ResetPasswordComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
   {path:'dash-board',component:DashBoardComponent},
-  {path:'notes',component:NotesComponent}
+  {path:'notes',component:NotesComponent},
+  {path:'collaborator',component:CollaboratorDialogBoxComponent}
 
 ];
 
