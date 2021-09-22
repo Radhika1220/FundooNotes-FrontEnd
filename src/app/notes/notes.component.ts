@@ -17,7 +17,7 @@ export class NotesComponent implements OnInit {
   archive:boolean=false;
   create=false;
   expand:boolean=false;
-color:string="";
+  color:string="";
   constructor(
     private noteService:NoteServiceService,
     private snackBar: MatSnackBar,
@@ -35,7 +35,15 @@ color:string="";
   CreateNote()
   {
   this.toggle=!this.toggle;
-  this.noteService.CreateNote(this.NoteForm.value).subscribe
+  let object=
+  {
+    Title:this.NoteForm.value.Title,
+    Description:this.NoteForm.value.Description,
+    Pin:this.pinned,
+    Archieve:this.archive,
+    Color:this.color
+  }
+  this.noteService.CreateNote(object).subscribe
   ((result:any)=>{
   this.openSnackBar(result.message , '');
   console.log(result);

@@ -9,10 +9,10 @@
 </mat-card>
 <mat-card *ngIf="!toggle" id="matcard">
     <div class="column" [formGroup]="NoteForm">
-        <div class="divContent" (click)="PinNote()">
+        <div class="divContent">
             <input placeholder="Title" class="notes" formControlName='Title'  id="title">
-            <i class="material-icons" matTooltip="Pin" *ngIf="!pinned">push_pin</i>
-         <i class="material-icons" matTooltip="Pin" *ngIf="pinned"  style="color:gray">push_pin</i>
+            <i class="material-icons" matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
+         <i class="material-icons" matTooltip="Pin" *ngIf="pinned" (click)="PinNote()" style="color:gray">push_pin</i>
         </div>
 
         <div class="divContent">
@@ -30,7 +30,7 @@
             <i class="material-icons" matTooltip="Archive"  *ngIf="archive" (click)="ArchiveNote()">archive</i>
             <i class="material-icons" [matMenuTriggerFor]="moremenu" (click)="CheckContent()"  matTooltip="More">more_vert</i>
         </div>
-        <button mat-button class="MovetoNext" (click)="toggle=!toggle;CreateNote()" style="font-size: 17px;"
+        <button mat-button class="MovetoNext" (click)="CreateNote()" style="font-size: 17px;"
         matTooltip="" style="padding-left: 10px; padding-right: 10px;">Close</button>
         </div>
     </div>
