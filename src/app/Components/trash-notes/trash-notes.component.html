@@ -1,5 +1,5 @@
 
-<button mat-flat-button class="button" style="margin-top: 30px; margin-bottom: 20px;"  *ngIf="trashNotes != undefined" >Empty Bin</button>
+<button mat-flat-button class="button" style="margin-top: 30px; margin-bottom: 20px;"  *ngIf="trashNotes != undefined" (click)="EmptyTrash()" >Empty Bin</button>
 <div class="mainDiv">
     <mat-card [ngStyle]="{'background-color': note.color}" style="text-align: left; margin-bottom: 20px;" *ngFor="let note of trashNotes" >
         <img src='{{note.image}}' alt='' style="margin-bottom: 5px;" *ngIf=" note.image != null">

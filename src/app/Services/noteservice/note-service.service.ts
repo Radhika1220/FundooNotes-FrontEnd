@@ -86,4 +86,25 @@ RestoreTrash(noteId:any)
   headers: {Authorization:"Bearer "+user.Token}
  });
 }
+
+UploadImage(noteId:any,file:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  let image = new FormData();
+  image.append("image",file);
+
+    return this.httpService.put(`${environment.baseUrl}/api/UploadImage?noteId=${noteId}`,image,true,
+    {
+      headers: {Authorization:"Bearer "+user.Token}
+    } );
+    
+}
+EmptyTrash()
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!); 
+  return this.httpService.delete(`${environment.baseUrl}/api/EmptyTrash?userId=${user.key}`,true,
+  {
+   headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }

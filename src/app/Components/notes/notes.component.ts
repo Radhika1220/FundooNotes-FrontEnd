@@ -27,6 +27,7 @@ export class NotesComponent implements OnInit {
   selectable = true;
   removable = true;
   reminder:any;
+  file:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 
@@ -77,9 +78,16 @@ export class NotesComponent implements OnInit {
   ((result:any)=>{
   this.openSnackBar(result.message , '');
   console.log(result);
+  if(this.file != null)
+  {
+  console.log("image present");
+
+  this.UploadImage(result.noteId);
+  }
   this.NoteForm.reset();
   this.create=false
   },
+
   (error:HttpErrorResponse) => { 
     if(!error.error.status)
     {            
@@ -189,4 +197,28 @@ getMonday(d:any) {
       diff = d.getDate() + day + (day == 1 ? 6:(5-day));
   return new Date(d.setDate(diff));
 }
+
+OnSelectFile(files: any)
+{
+  console.log(files.target.files[0]);
+  var imageFile= new File(files.target.files[0] , files.target.files[0].name);
+  this.file=imageFile;
+  console.log(this.file);
+}
+
+UploadImage(noteId:any)
+{
+  console.log(this.file);
+  this.noteService.UploadImage(noteId,this.file)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.message);
+    console.log(result.status);
+
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
+}
+
 }

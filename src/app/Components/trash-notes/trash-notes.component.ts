@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
 @Component({
   selector: 'app-trash-notes',
@@ -8,7 +9,8 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 })
 export class TrashNotesComponent implements OnInit {
 trashNotes!:any[];
-  constructor(private noteService:NoteServiceService) { }
+  constructor(private noteService:NoteServiceService,
+    public _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.GetTrash();
@@ -55,5 +57,29 @@ trashNotes!:any[];
       console.log(error.error.message);
     })
 
+  }
+
+
+  EmptyTrash()
+  {
+    this.noteService.EmptyTrash()
+    .subscribe(
+      (result: any) => 
+      {
+      console.log(result.status);
+      this.openSnackBar(result.message);
+
+      },(error: HttpErrorResponse) => {
+      console.log(error.error.message);
+      console.log(this.trashNotes)
+    })
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message,'',
+    {
+      duration:5000,
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom'
+    });
   }
 }
