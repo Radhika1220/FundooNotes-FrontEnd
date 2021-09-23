@@ -15,8 +15,8 @@ mat-card
     padding: 0px !important;
     max-height: 600px;
     min-height: fit-content !important;
-    width: 240px;
-    max-width: 240px;
+    width: 270px;
+    max-width: 270px;
     border-radius: 10px;
     margin: 10px;
     
@@ -32,7 +32,17 @@ mat-card img{
       display: flex;
       justify-content: space-between;
   }
+  .archive:hover
+  {
+      cursor: pointer;
+    .icon-hover
+    {
+        display: block;
+    }
+  }
+
   .main-div mat-card {
+      
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
@@ -46,13 +56,5 @@ mat-card img{
   {
       display: none;
       cursor: pointer;
-  }
-  .archive:hover
-  {
-      cursor: pointer;
-    .icon-hover
-    {
-        display: block;
-    }
   }
 
