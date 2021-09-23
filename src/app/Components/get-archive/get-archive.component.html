@@ -1,18 +1,19 @@
 <div class="mainDiv">
-    <mat-card [ngStyle]="{'background-color': note.color}" style="text-align: left; margin-bottom: 20px;" *ngFor="let note of archiveNotes" >
+    <mat-card [ngStyle]="{'background-color': note.color}"  *ngFor="let note of archiveNotes" >
         <img src='{{note.image}}' alt='' style="margin-bottom: 5px;" *ngIf=" note.image != null">
         <div class="content">
         <div class="row">
             <h2 style="margin-bottom: -5px; margin-top: -5px;">{{note.title}}</h2>
-            <i class="material-icons" matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
+            <i class="material-icons";matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
             <i class="material-icons" matTooltip="Pin" *ngIf="pinned" (click)="PinNote()" style="color:gray">push_pin</i>
         </div>
         <div style="margin: 20px;">
             <p style="margin-top: -15px;">{{note.description}}</p>
         </div>
-        <div class="archive" style="width: fit-content; display: flex; justify-content: center; align-items: center; background-color: rgb(197, 194, 194); border-radius: 20px;">
-            <i class="material-icons " style=" font-size: medium; padding-left: 8px;">access_time</i>
-            <p style="padding: 10px 5px 0px 5px;font-size: 12px;" >{{note.remainder}}</p>
+        <div class="archive">
+            <i class="material-icons"  style="font-size: medium; 
+            padding-left: 8px;">access_time</i>
+            <p  class="para">{{note.remainder}}</p>
             <i class="material-icons icon-hover" style="margin-bottom: 5px;">close</i>
         </div>
     </div>

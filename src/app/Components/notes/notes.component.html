@@ -41,7 +41,7 @@
             <i class="material-icons"  matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
             <i class="material-icons"  [matMenuTriggerFor]="colormenu" matTooltip="Change Color">color_lens</i>
             <label for="image">
-                <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="OnSelectFile($event)"/>
+                <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="OnselectFile($event)"/>
                 <i class="material-icons" matTooltip="Add Image">image</i>
             </label>
             <i class="material-icons" matTooltip="Archive"  *ngIf="!archive" (click)="ArchiveNote()">archive</i>

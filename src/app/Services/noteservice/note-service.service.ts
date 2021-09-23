@@ -93,7 +93,7 @@ UploadImage(noteId:any,file:any)
   let image = new FormData();
   image.append("image",file);
 
-    return this.httpService.put(`${environment.baseUrl}/api/UploadImage?noteId=${noteId}`,image,true,
+    return this.httpService.post(`${environment.baseUrl}/api/UploadImage?noteId=${noteId}`,image,true,
     {
       headers: {Authorization:"Bearer "+user.Token}
     } );

@@ -198,7 +198,7 @@ getMonday(d:any) {
   return new Date(d.setDate(diff));
 }
 
-OnSelectFile(files: any)
+OnselectFile(files: any)
 {
   console.log(files.target.files[0]);
   var imageFile= new File(files.target.files[0] , files.target.files[0].name);
@@ -206,9 +206,9 @@ OnSelectFile(files: any)
   console.log(this.file);
 }
 
+
 UploadImage(noteId:any)
 {
-  console.log(this.file);
   this.noteService.UploadImage(noteId,this.file)
   .subscribe(
     (result: any) => 
