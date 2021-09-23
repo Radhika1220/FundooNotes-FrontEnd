@@ -10,7 +10,7 @@ import { NoteServiceService } from 'src/app/Services/noteservice/note-service.se
 export class DashBoardComponent implements OnInit {
   isGrid=false;
   opened: boolean = true;
-  getnote:string='';
+  getnotes="Notes";
   // SearchField:any;
    constructor(
     private noteService:NoteServiceService

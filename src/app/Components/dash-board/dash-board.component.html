@@ -36,11 +36,11 @@
                 <mat-nav-list>
                     <mat-list-item>
                       <mat-icon mat-list-icon class="sideNavLogo">lightbulb_outline</mat-icon>
-                      <h4 mat-line>Notes</h4>
+                      <h4 mat-line (click)="getnotes='Notes'">Notes</h4>
                     </mat-list-item>
                     <mat-list-item>
                         <mat-icon mat-list-icon class="sideNavLogo">notifications_none</mat-icon>
-                        <h4 mat-line>Reminders</h4>
+                        <h4 mat-line (click)="getnotes='Reminder'">Reminders</h4>
                     </mat-list-item>
 
                     <mat-list-item *ngFor="let label of labels">
@@ -65,7 +65,8 @@
             </mat-sidenav>
         <mat-sidenav-content align="center">
             <app-notes align="center"></app-notes>
-            <app-get-note></app-get-note>
+            <app-get-note *ngIf="getnotes=='Notes'"></app-get-note>
+            <app-get-reminder *ngIf="getnotes=='Reminder'"></app-get-reminder>
         </mat-sidenav-content>
     </mat-sidenav-container>
     </div>
