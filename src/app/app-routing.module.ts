@@ -8,7 +8,7 @@ import { DashBoardComponent } from './Components/dash-board/dash-board.component
 import { NotesComponent } from './Components/notes/notes.component';
 import { CollaboratorDialogBoxComponent } from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
 import { GetNoteComponent } from './Components/get-note/get-note.component';
-import { GetReminderComponent } from './get-reminder/get-reminder.component';
+import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
 import { IconsComponent } from './Components/icons/icons.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;

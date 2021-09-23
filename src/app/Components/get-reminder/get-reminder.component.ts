@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-// import { CardDialogComponent } from '../card-dialog/card-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
 @Component({
   selector: 'app-get-reminder',
@@ -10,7 +9,9 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 })
 export class GetReminderComponent implements OnInit {
   reminderNotes!:any[];
-  constructor(private noteService:NoteServiceService) { }
+  pinned:boolean=true;
+  constructor(private noteService:NoteServiceService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.GetReminder();
@@ -28,8 +29,13 @@ export class GetReminderComponent implements OnInit {
     console.log(error.error.message);
   })
   }
-  // OpenCard()
-  // {
-  //   this.dialog.open(CardDialogComponent);
-  // }
+  PinNote()
+{
+  this.snackBar.open(`${this.pinned?'Note Unpinned':'Note Pinned'}`, '', {
+      duration: 5000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center'
+    });
+    this.pinned=!(this.pinned);
+}
 }

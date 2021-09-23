@@ -32,7 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatChipsModule} from '@angular/material/chips';
 import { IconsComponent } from './Components/icons/icons.component';
-import { GetReminderComponent } from './get-reminder/get-reminder.component';
+import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
+import { GetArchiveComponent } from './get-archive/get-archive.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { GetReminderComponent } from './get-reminder/get-reminder.component';
     CollaboratorDialogBoxComponent,
     GetNoteComponent,
     IconsComponent,
-    GetReminderComponent
+    GetReminderComponent,
+    GetArchiveComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
