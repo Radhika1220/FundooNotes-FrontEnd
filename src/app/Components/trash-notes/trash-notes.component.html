@@ -1,0 +1,28 @@
+
+<button mat-flat-button class="button" style="margin-top: 30px; margin-bottom: 20px;"  *ngIf="trashNotes != undefined" (click)="EmptyTrash()" >Empty Bin</button>
+<div class="mainDiv">
+    <mat-card [ngStyle]="{'background-color': note.color}" style="text-align: left; margin-bottom: 20px;" *ngFor="let note of trashNotes" >
+        <img src='{{note.image}}' alt='' style="margin-bottom: 5px;" *ngIf=" note.image != null">
+        <div class="content">
+        <div class="title">
+            <h2 style="margin-bottom: -5px; margin-top: -5px;">{{note.title}}</h2>
+        </div>
+        <div style="margin: 20px;">
+            <p style="margin-top: -15px;">{{note.description}}</p>
+        </div>
+        <div class="reminder" *ngIf="note.remainder != null">
+        </div>
+    </div>
+    <div class="icons" style="margin-top: 0px; margin-bottom: 10px;">
+        <i class="material-icons"  matTooltip="Delete" (click)="DeleteTrash(note)">delete_forever</i>
+        <i class="material-icons"  matTooltip="Restore" (click)= "RestoreTrash(note)">restore_from_trash</i>
+        </div>
+    </mat-card>
+
+</div>
+<div *ngIf="trashNotes == undefined" class="delete">
+    <i class="material-icons" style=" font-size: 200px; color: rgb(216, 214, 214);">delete_outline</i>
+    <p>
+        No Notes in Bin
+    </p>
+</div>

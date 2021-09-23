@@ -1,0 +1,21 @@
+<div class="mainDiv">
+    <mat-card [ngStyle]="{'background-color': note.color}" *ngFor="let note of reminderNotes">
+        <img src='{{note.image}}' alt='' style="margin-bottom: 5px;" *ngIf=" note.image != null">
+        <div class="contents">
+        <div class="row">
+            <h3 >{{note.title}}</h3>
+            <i class="material-icons" matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
+            <i class="material-icons" matTooltip="Pin" *ngIf="pinned" (click)="PinNote()" style="color:gray">push_pin</i>
+        </div>
+        <div style="margin: 20px;">
+            <p style="margin-top: -15px;">{{note.description}}</p>
+        </div>
+        <div class="reminder"  *ngIf="note.remainder != null">
+            <p  class="para"> {{note.remainder}}</p>
+            <i class="material-icons icon-hover" style="margin-bottom: 5px;">close</i>
+        </div>
+    </div>
+    <app-icons></app-icons>
+    </mat-card>
+
+</div>

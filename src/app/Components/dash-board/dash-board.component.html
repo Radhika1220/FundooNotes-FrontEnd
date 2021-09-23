@@ -1,0 +1,75 @@
+<div>
+    <div>
+        <mat-toolbar>
+            <div class="menu-box">
+                <button mat-icon-button class="example-spacer" aria-label="Example icon-button with menu icon">
+                    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+                </button>
+                <img src="../assets/google keep.png" width="40px" height="40px">
+                <span>Fundoo</span>
+            </div>
+            <div class="search">
+                <mat-form-field appearance="outline">
+                    <mat-icon matPrefix class="search-icon">search</mat-icon>
+                    <input matInput placeholder="  Search">
+                    <i class="material-icons" matSuffix>close</i>
+                </mat-form-field>
+            </div>
+            <div class="menu-box">
+                <div class="list">
+                    <i class="material-icons icons" *ngIf="!isGrid" (click)="isGrid=true">view_list</i>
+                    <i class="material-icons icons" *ngIf="isGrid" (click)="isGrid=false">grid_view</i>
+                </div>
+                <mat-icon class="icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+                <mat-menu #menu="matMenu" class="account-menu">
+                    <img src="../assets/acc.png" width="60px" height="60px" style="margin-top: 25px;">
+                     <p >{{userDetails.FirstName}} {{userDetails.LastName}}</p>
+                    <p class="email ">{{userDetails.Email}}</p>
+                    <mat-divider style="width: 100%; margin: 0px; padding: 0px;"></mat-divider>
+                    <button mat-raised-button (click)="Logout()">Logout</button>
+                </mat-menu>
+            </div>
+        </mat-toolbar>
+        <mat-divider></mat-divider>
+        <mat-sidenav-container class="sideNavContainer">
+            <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseover)='opened=true'>
+                <mat-nav-list>
+                    <mat-list-item>
+                      <mat-icon mat-list-icon class="sideNavLogo">lightbulb_outline</mat-icon>
+                      <h4 mat-line (click)="getnotes='Notes'">Notes</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon class="sideNavLogo">notifications_none</mat-icon>
+                        <h4 mat-line (click)="getnotes='Reminder'">Reminders</h4>
+                    </mat-list-item>
+
+                    <mat-list-item *ngFor="let label of labels">
+                        <mat-icon mat-list-icon class="sidenavLogo">label_outline</mat-icon>
+                        <h4 mat-line>{{label['labelName']}}</h4>
+                    </mat-list-item>
+
+
+                    <mat-list-item>
+                        <mat-icon mat-list-icon class="sideNavLogo ">edit</mat-icon>
+                        <h4 mat-line>Edit labels</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon class="sideNavLogo">archive</mat-icon>
+                        <h4 mat-line (click)="getnotes='Archive'">Archive</h4>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon class="sideNavLogo ">delete</mat-icon>
+                        <h4 mat-line (click)="getnotes='Trash'">Trash</h4>
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-sidenav>
+        <mat-sidenav-content align="center">
+            <app-notes align="center"></app-notes>
+            <app-get-note *ngIf="getnotes=='Notes'"></app-get-note>
+            <app-get-reminder *ngIf="getnotes=='Reminder'"></app-get-reminder>
+            <app-get-archive *ngIf="getnotes=='Archive'"></app-get-archive>
+            <app-trash-notes *ngIf="getnotes=='Trash'"></app-trash-notes>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    </div>
+</div>
