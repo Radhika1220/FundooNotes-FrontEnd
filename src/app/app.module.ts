@@ -27,11 +27,11 @@ import { NotesComponent } from './Components/notes/notes.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CollaboratorDialogBoxComponent} from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
-import { GetNoteComponent } from './get-note/get-note.component';
-import { GetArchiveComponent } from './get-archive/get-archive.component';
+import { GetNoteComponent } from './Components/get-note/get-note.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatChipsModule} from '@angular/material/chips';
+import { IconsComponent } from './Components/icons/icons.component';
 
 
 
@@ -46,7 +46,7 @@ import {MatChipsModule} from '@angular/material/chips';
     NotesComponent,
     CollaboratorDialogBoxComponent,
     GetNoteComponent,
-    GetArchiveComponent
+    IconsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

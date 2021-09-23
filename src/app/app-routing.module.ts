@@ -7,8 +7,9 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
 import { DashBoardComponent } from './Components/dash-board/dash-board.component';
 import { NotesComponent } from './Components/notes/notes.component';
 import { CollaboratorDialogBoxComponent } from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
-import { GetNoteComponent } from './get-note/get-note.component';
-import { GetArchiveComponent } from './get-archive/get-archive.component';
+import { GetNoteComponent } from './Components/get-note/get-note.component';
+
+import { IconsComponent } from './Components/icons/icons.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'notes',component:NotesComponent},
   {path:'collaborator',component:CollaboratorDialogBoxComponent},
   {path:'get-notes',component:GetNoteComponent},
-  {path:'get-archive',component:GetArchiveComponent}
+ 
+  {path:'icons',component:IconsComponent}
 ];
 
 @NgModule({

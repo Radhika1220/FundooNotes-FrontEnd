@@ -40,7 +40,10 @@
                 [matMenuTriggerFor]="remindermenu" matTooltip="Remind me">notification_important</i>
             <i class="material-icons"  matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
             <i class="material-icons"  [matMenuTriggerFor]="colormenu" matTooltip="Change Color">color_lens</i>
-            <i class="material-icons" matTooltip="Add Image">image</i>
+            <label for="image">
+                <input type="file" name="image" accept="image/*" id="image" style="display:none;" />
+                <i class="material-icons" matTooltip="Add Image">image</i>
+            </label>
             <i class="material-icons" matTooltip="Archive"  *ngIf="!archive" (click)="ArchiveNote()">archive</i>
             <i class="material-icons" matTooltip="Archive"  *ngIf="archive" (click)="ArchiveNote()">archive</i>
             <i class="material-icons" [matMenuTriggerFor]="moremenu" (click)="CheckContent()"  matTooltip="More">more_vert</i>

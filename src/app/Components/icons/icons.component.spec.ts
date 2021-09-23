@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GetArchiveComponent } from './get-archive.component';
+import { IconsComponent } from './icons.component';
 
-describe('GetArchiveComponent', () => {
-  let component: GetArchiveComponent;
-  let fixture: ComponentFixture<GetArchiveComponent>;
+describe('IconsComponent', () => {
+  let component: IconsComponent;
+  let fixture: ComponentFixture<IconsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetArchiveComponent ]
+      declarations: [ IconsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GetArchiveComponent);
+    fixture = TestBed.createComponent(IconsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
