@@ -55,7 +55,7 @@
                     </mat-list-item>
                     <mat-list-item>
                         <mat-icon mat-list-icon class="sideNavLogo">archive</mat-icon>
-                        <h4 mat-line>Archive</h4>
+                        <h4 mat-line (click)="getnotes='Archive'">Archive</h4>
                     </mat-list-item>
                     <mat-list-item>
                         <mat-icon mat-list-icon class="sideNavLogo ">delete</mat-icon>
@@ -67,6 +67,7 @@
             <app-notes align="center"></app-notes>
             <app-get-note *ngIf="getnotes=='Notes'"></app-get-note>
             <app-get-reminder *ngIf="getnotes=='Reminder'"></app-get-reminder>
+            <app-get-archive *ngIf="getnotes=='Archive'"></app-get-archive>
         </mat-sidenav-content>
     </mat-sidenav-container>
     </div>

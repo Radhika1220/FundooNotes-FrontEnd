@@ -33,7 +33,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatChipsModule} from '@angular/material/chips';
 import { IconsComponent } from './Components/icons/icons.component';
 import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
-import { GetArchiveComponent } from './get-archive/get-archive.component';
+import { GetArchiveComponent } from './Components/get-archive/get-archive.component';
 
 @NgModule({
   declarations: [

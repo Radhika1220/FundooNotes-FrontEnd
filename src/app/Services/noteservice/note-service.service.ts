@@ -51,4 +51,13 @@ GetReminder()
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
+
+GetArchive()
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.get(`${environment.baseUrl}/api/GetNotesFromArchive?userId=${user.key}`,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }
