@@ -69,4 +69,21 @@ GetTrash()
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
+DeleteTrash(noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.delete(`${environment.baseUrl}/api/DeleteNotes?noteId=${noteId}`,true,
+ {
+  headers: {Authorization:"Bearer "+user.Token}
+ });
+}
+
+RestoreTrash(noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.put(`${environment.baseUrl}/api/RestoreNotes?noteId=${noteId}`,null,true,
+ {
+  headers: {Authorization:"Bearer "+user.Token}
+ });
+}
 }

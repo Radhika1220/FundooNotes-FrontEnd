@@ -26,4 +26,34 @@ trashNotes!:any[];
     console.log(error.error.message);
   })
   }
+
+  DeleteTrash(note:any)
+  {
+    this.noteService.DeleteTrash(note.noteId)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.data);
+    console.log(result.status);
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
+  }
+
+  RestoreTrash(note:any)
+  {  
+
+    this.noteService.RestoreTrash(note.noteId)
+    .subscribe(
+      (result: any) => 
+      {
+        console.log(result);
+       this.trashNotes=result.data;
+       console.log(this.trashNotes)
+
+      },(error: HttpErrorResponse) => {
+      console.log(error.error.message);
+    })
+
+  }
 }
