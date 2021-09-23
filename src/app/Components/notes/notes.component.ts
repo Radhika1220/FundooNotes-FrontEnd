@@ -5,6 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CollaboratorDialogBoxComponent } from 'src/app/Components/collaborator-dialog-box/collaborator-dialog-box.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatChipInputEvent} from '@angular/material/chips';
+export interface Remainder {
+  name: string;
+}
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -18,6 +22,31 @@ export class NotesComponent implements OnInit {
   create=false;
   expand:boolean=false;
   color:string="";
+  rem: Remainder[] = [];
+  pickDate:boolean=false;
+  selectable = true;
+  removable = true;
+  reminder:any;
+  monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+
+];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.rem.push({name: value});
+    }
+    event.chipInput!.clear();
+  }
+
+  remove(r: Remainder): void {
+    const index = this.rem.indexOf(r);
+
+    if (index >= 0) {
+      this.rem.splice(index, 1);
+    }
+  }
   constructor(
     private noteService:NoteServiceService,
     private snackBar: MatSnackBar,
@@ -41,7 +70,8 @@ export class NotesComponent implements OnInit {
     Description:this.NoteForm.value.Description,
     Pin:this.pinned,
     Archieve:this.archive,
-    Color:this.color
+    Color:this.color,
+    Remainder:this.reminder
   }
   this.noteService.CreateNote(object).subscribe
   ((result:any)=>{
@@ -131,5 +161,32 @@ ArchiveNote()
       horizontalPosition: 'center'
     });
     this.archive=!(this.archive);
+}
+
+
+SetDate(date:string)
+{
+  if(this.rem.length == 1)
+  {
+    this.rem.pop();
+    // this.pickDate=!this.pickDate;
+  }
+    console.log(date);
+    if(date == 'set')
+    {
+      let nextDate= this.getMonday(new Date());
+      date=  this.monthNames[nextDate.getMonth()] +" "+nextDate.getDate().toString() + ", 8:00 AM"
+      console.log(date);
+   
+    }
+  this.reminder=date;
+    this.rem.push({name: date});
+    this.pickDate=!this.pickDate;
+}
+getMonday(d:any) {
+  d = new Date(d);
+  var day = d.getDay(),
+      diff = d.getDate() + day + (day == 1 ? 6:(5-day));
+  return new Date(d.setDate(diff));
 }
 }

@@ -39,3 +39,10 @@ PinNote()
     this.pinned=!(this.pinned);
 }
 }
+
+ 
+
+
+
+
+  

@@ -18,7 +18,8 @@ export class NoteServiceService {
         UserId:user.key,
         Color:data.Color,
         Archieve:data.Archieve,
-        Pin:data.Pin
+        Pin:data.Pin,
+        Remainder:data.Remainder
     }
     return this.httpService.post(`${environment.baseUrl}/api/AddNotes`,param,true,
     {
@@ -34,5 +35,12 @@ export class NoteServiceService {
       headers: {Authorization:"Bearer "+user.Token}
     });
   }
-
+GetAllLabels()
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.get(`${environment.baseUrl}/api/GetAllLabels?userId=${user.key}`,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }

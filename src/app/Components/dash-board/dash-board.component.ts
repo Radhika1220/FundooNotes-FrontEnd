@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NoteServiceService } from 'src/app/Services/noteservice/note-service.service';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +11,14 @@ export class DashBoardComponent implements OnInit {
   isGrid=false;
   opened: boolean = true;
   // SearchField:any;
-   constructor() { }
+   constructor(
+    private noteService:NoteServiceService
+   ) { }
   userDetails:any;
+  labels:any=[];
   ngOnInit(): void {
      this.userDetails = JSON.parse(localStorage.getItem('FundooNotes')!);
+     this.GetAllLabels();
   }
   // ClearSearchField() 
   // {
@@ -25,4 +30,13 @@ export class DashBoardComponent implements OnInit {
   //         this.router.navigateByUrl('/Login');
   //     }
   // }
+
+  GetAllLabels()
+  {
+     this.noteService.GetAllLabels().subscribe((result: any) => {
+       console.log(result.data);
+      this.labels=result.data;
+      console.log(this.labels);
+    });
+  }
 }

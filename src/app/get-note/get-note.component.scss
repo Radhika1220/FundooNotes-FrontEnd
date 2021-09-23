@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items:flex-start; 
-  margin-left: 50px;
+  margin-left: 70px;
 }
 mat-card
 {
@@ -32,7 +32,8 @@ mat-card img
       display: flex;
       justify-content: space-between;
   }
-  .main-div mat-card {
+  .main-div mat-card 
+  {
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid; 
     break-inside: avoid;
@@ -42,3 +43,7 @@ mat-card img
       padding: 10px;
       margin-top: 10px;
   }
+
+
+
+

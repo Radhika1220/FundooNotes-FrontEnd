@@ -28,6 +28,11 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {CollaboratorDialogBoxComponent} from './Components/collaborator-dialog-box/collaborator-dialog-box.component';
 import { GetNoteComponent } from './get-note/get-note.component';
+import { GetArchiveComponent } from './get-archive/get-archive.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 @NgModule({
@@ -40,7 +45,8 @@ import { GetNoteComponent } from './get-note/get-note.component';
     DashBoardComponent,
     NotesComponent,
     CollaboratorDialogBoxComponent,
-    GetNoteComponent
+    GetNoteComponent,
+    GetArchiveComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -62,7 +68,12 @@ MatSidenavModule,
 MatListModule,
 MatMenuModule,
 MatButtonToggleModule,
-MatDialogModule
+MatDialogModule,
+MatSelectModule,
+MatDatepickerModule,
+MatChipsModule
+
+
   ],
   providers: [
   ],
