@@ -34,6 +34,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { IconsComponent } from './Components/icons/icons.component';
 import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
 import { GetArchiveComponent } from './Components/get-archive/get-archive.component';
+import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { GetArchiveComponent } from './Components/get-archive/get-archive.compon
     GetNoteComponent,
     IconsComponent,
     GetReminderComponent,
-    GetArchiveComponent
+    GetArchiveComponent,
+    TrashNotesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

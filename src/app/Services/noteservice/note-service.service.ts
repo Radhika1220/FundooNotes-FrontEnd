@@ -60,4 +60,13 @@ GetArchive()
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
+
+GetTrash()
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.get(`${environment.baseUrl}/api/GetNotesFromTrash?userId=${user.key}`,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }

@@ -26,7 +26,7 @@
                      <p >{{userDetails.FirstName}} {{userDetails.LastName}}</p>
                     <p class="email ">{{userDetails.Email}}</p>
                     <mat-divider style="width: 100%; margin: 0px; padding: 0px;"></mat-divider>
-                    <button mat-raised-button>Logout</button>
+                    <button mat-raised-button (click)="Logout()">Logout</button>
                 </mat-menu>
             </div>
         </mat-toolbar>
@@ -59,7 +59,7 @@
                     </mat-list-item>
                     <mat-list-item>
                         <mat-icon mat-list-icon class="sideNavLogo ">delete</mat-icon>
-                        <h4 mat-line>Trash</h4>
+                        <h4 mat-line (click)="getnotes='Trash'">Trash</h4>
                     </mat-list-item>
                 </mat-nav-list>
             </mat-sidenav>
@@ -68,6 +68,7 @@
             <app-get-note *ngIf="getnotes=='Notes'"></app-get-note>
             <app-get-reminder *ngIf="getnotes=='Reminder'"></app-get-reminder>
             <app-get-archive *ngIf="getnotes=='Archive'"></app-get-archive>
+            <app-trash-notes *ngIf="getnotes=='Trash'"></app-trash-notes>
         </mat-sidenav-content>
     </mat-sidenav-container>
     </div>
