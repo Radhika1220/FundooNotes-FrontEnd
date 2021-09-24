@@ -38,6 +38,19 @@ PinNote()
     });
     this.pinned=!(this.pinned);
 }
+
+DeleteReminder(note:any)
+{
+  console.log(note.notesId);
+  this.noteService.DeleteReminder(note.noteId)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.data);
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
+}
 }
 
  

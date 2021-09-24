@@ -11,10 +11,10 @@
             <p style="margin-top: -15px;">{{note.description}}</p>
         </div>
         <div class="archive">
-            <i class="material-icons"  style="font-size: medium; 
-            padding-left: 8px;">access_time</i>
+            <!-- <i class="material-icons"  style="font-size: medium; 
+            padding-left: 8px;">access_time</i> -->
             <p  class="para">{{note.remainder}}</p>
-            <i class="material-icons icon-hover" style="margin-bottom: 5px;">close</i>
+            <i class="material-icons icon-hover" style="margin-bottom: 5px;" (click)="DeleteReminder(note)">close</i>
         </div>
     </div>
     <app-icons [note]="note"></app-icons>

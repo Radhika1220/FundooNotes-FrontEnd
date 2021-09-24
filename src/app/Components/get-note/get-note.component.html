@@ -11,6 +11,10 @@
         <div style="margin: 20px;">
             <p>{{note.description}}</p>
         </div>
+        <div class="reminder" *ngIf="note.remainder != null">
+            <p  class="para"> {{note.remainder}}</p>
+            <i class="material-icons icon-hover" style="margin-bottom: 5px;" (click)="DeleteReminder(note)">close</i>
+        </div>
     </div>
     <app-icons [note]="note"></app-icons>
     </mat-card>

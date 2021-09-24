@@ -4,8 +4,8 @@
      <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
    </div>
 
-    <i class="material-icons" matTooltip="Remind me"   [matMenuTriggerFor]="remindermenu">notification_important</i>
-    <i class="material-icons" matTooltip="Collaborator">person_add_alt_1</i>
+    <i class="material-icons" matTooltip="Remind me" [matMenuTriggerFor]="remindermenus">notification_important</i>
+    <i class="material-icons" matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
     <i class="material-icons" matTooltip="Change Color" [matMenuTriggerFor]="ChangeColor">color_lens</i>
 
     <label for="image">
@@ -19,6 +19,25 @@
         <button mat-menu-item style="font-size: 17px;" (click)="DeleteNote()">Delete Note</button>
     </mat-menu>
 
+    <mat-menu #remindermenus="matMenu" class="reminder-menu" style="width: 500px;">
+
+        <div class="space h4">
+            <h4 style="font-weight: 500;">Reminder:</h4>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDates('Today, 8:00PM')">
+            <p>Later Today</p>
+            <p class="color">8:00 PM</p>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDates('Tomorrow, 8:00AM')">
+            <p>Tomorrow</p>
+            <p class="color">8:00 AM</p>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDates('set')">
+            <p>Next week</p>
+            <p class="color">Mon, 8:00 AM</p>
+        </div>
+    </mat-menu>
+ 
     <div class="example-chip-list" appearance="fill" *ngIf="rem.length>0"
         style="width:max-content; display: flex;">
 
@@ -29,29 +48,8 @@
             <mat-icon matChipRemove *ngIf="removable"
                 style="text-align: center; cursor: pointer;">cancel</mat-icon>
         </mat-chip>
-    </div>
-    <mat-menu #remindermenu="matMenu">
 
-        <div mat-menu-item class="space h4">
-            <h4 class="h4">Reminder:</h4>
-        </div>
-        <div mat-menu-item class="space" (click)="SetDate('Today, 10:00PM')">
-            <p>Later Today</p>
-                <p class="color">10:00 PM</p>
-        </div>
-        <div mat-menu-item class="space" (click)="SetDate('Tomorrow, 8:00AM')">
-            <p>Tomorrow</p>
-            <p class="color">8:00 AM</p>
-        </div>
-        <div mat-menu-item class="space" (click)="SetDate('set')">
-            <p>Next week</p>
-            <p class="color">Wed, 8:00 PM</p>
-        </div>
-        <div mat-menu-item  class="space">
-            <i class="material-icons" style="font-size:17px;">access_time</i>
-            <p class="clock">Pick date and Time</p>
-        </div>
-    </mat-menu>
+    </div>
 
 
 </div>

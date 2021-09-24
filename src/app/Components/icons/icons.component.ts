@@ -3,6 +3,8 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { CollaboratorDialogBoxComponent } from 'src/app/Components/collaborator-dialog-box/collaborator-dialog-box.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export interface Remainder {
   name: string;
 }
@@ -38,7 +40,8 @@ export class IconsComponent implements OnInit
     }
   }
   constructor( private noteService:NoteServiceService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog) { }
     @Input() note!:any;
     expand!:any;
   ngOnInit(): void {
@@ -134,31 +137,31 @@ Colors = [ [
 }
 
 
-SetDate(date:string)
-{
-  if(this.rem.length == 1)
-  {
-    this.rem.pop();
-    // this.pickDate=!this.pickDate;
-  }
-    console.log(date);
-    if(date == 'set')
-    {
-      let nextDate= this.getMonday(new Date());
-      date=  this.monthNames[nextDate.getMonth()] +" "+nextDate.getDate().toString() + ", 8:00 AM"
-      console.log(date);
+// SetDate(date:string)
+// {
+//   if(this.rem.length == 1)
+//   {
+//     this.rem.pop();
+//     // this.pickDate=!this.pickDate;
+//   }
+//     console.log(date);
+//     if(date == 'set')
+//     {
+//       let nextDate= this.getMonday(new Date());
+//       date=  this.monthNames[nextDate.getMonth()] +" "+nextDate.getDate().toString() + ", 8:00 AM"
+//       console.log(date);
    
-    }
-  this.reminder=date;
-    this.rem.push({name: date});
-    this.pickDate=!this.pickDate;
-}
-getMonday(d:any) {
-  d = new Date(d);
-  var day = d.getDay(),
-      diff = d.getDate() + day + (day == 1 ? 6:(5-day));
-  return new Date(d.setDate(diff));
-}
+//     }
+//   this.reminder=date;
+//     this.rem.push({name: date});
+//     this.pickDate=!this.pickDate;
+// }
+// getMonday(d:any) {
+//   d = new Date(d);
+//   var day = d.getDay(),
+//       diff = d.getDate() + day + (day == 1 ? 6:(5-day));
+//   return new Date(d.setDate(diff));
+// }
 
 
 PinNote()
@@ -198,6 +201,66 @@ PinNote()
       console.log(this.note.noteId);
     console.log(result.message);
     console.log(result.status);
+
+    },(error: HttpErrorResponse) => 
+    {
+    console.log(error.error.message);
+  })
+}
+
+public date = new Date();
+
+time:string='8:PM';
+selected:string='';
+// image:any;
+
+SetDates(date:string)
+{
+
+    console.log(date);
+    if(date == 'set')
+    {
+      let nextDate= this.getMonday(new Date());
+      date=  this.monthNames[nextDate.getMonth()] +" "+nextDate.getDate().toString() + ", 8:00 AM"
+      console.log(date);
+      this.date=nextDate;
+      this.time="8:AM";
+    }
+    else if(date == 'Tomorrow, 8:00AM')
+    {
+      this.date=new Date(this.date.setDate(this.date.getDate() + 1));
+      console.log(this.date);
+      this.time="8:AM";
+    }
+    this.selected=this.time;
+    this.reminder=date;
+    this.pickDate=!this.pickDate;
+    this.SetReminder(date);
+}
+getMonday(d:any) {
+  d = new Date(d);
+  var day = d.getDay(),
+      diff = d.getDate() + day + (day == 1 ? 6:(5-day)); 
+  return new Date(d.setDate(diff));
+}
+
+openDialog()
+{
+  let dialogRef =this.dialog.open(CollaboratorDialogBoxComponent);
+  dialogRef.afterClosed().subscribe((result: any)=>
+    {
+      console.log( `Dialog res: ${result}`);
+    });
+}
+SetReminder(data:any)
+{
+
+  console.log(data);
+  this.noteService.SetReminder(this.note.noteId,data)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.message);
 
     },(error: HttpErrorResponse) => 
     {
