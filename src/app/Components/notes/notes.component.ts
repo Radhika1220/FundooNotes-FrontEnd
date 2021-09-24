@@ -201,7 +201,7 @@ getMonday(d:any) {
 OnselectFile(files: any)
 {
   console.log(files.target.files[0]);
-  var imageFile= new File(files.target.files[0] , files.target.files[0].name);
+  var imageFile= new File(files.target.files[0],files.target.files[0].name);
   this.file=imageFile;
   console.log(this.file);
 }

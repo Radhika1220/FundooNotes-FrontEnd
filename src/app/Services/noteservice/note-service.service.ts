@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpServiceService } from '../HttpService/http-service.service';
@@ -105,6 +106,43 @@ EmptyTrash()
   return this.httpService.delete(`${environment.baseUrl}/api/EmptyTrash?userId=${user.key}`,true,
   {
    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+
+SetColor(noteId:any,color:string)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!); 
+  console.log(color);
+  console.log(noteId);
+  let params = new HttpParams().set('noteId',noteId).set('color',color);
+  return this.httpService.put(`${environment.baseUrl}/api/ChangeColor`,params,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  } );
+}
+DeleteNote(noteId:number)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!); 
+  return this.httpService.put(`${environment.baseUrl}/api/TrashNotes?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+
+SetArchive(noteId:number)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!); 
+  return this.httpService.put(`${environment.baseUrl}/api/ArchiveNotes?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+UnArchive(noteid:number)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.put(`${environment.baseUrl}/api/UnArchiveNotes?noteId=${noteid}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
   });
 }
 }
