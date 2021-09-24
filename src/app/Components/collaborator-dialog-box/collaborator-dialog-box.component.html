@@ -16,14 +16,14 @@
     <div class="row" *ngFor="let email of emailsId" style=" margin-top: 8px; margin-bottom: 10px;">
         <img src="../assets/collaborator.png" width="33px" height="33px" style=" padding-left: 15px;">
         <input placeholder="Person or email to share with" style="font-weight: 400;" [value]="email" readonly>
-        <i class="material-icons icons" matSuffix style="padding-right: 10px;" (click)="RemoveCollaborator(email)">clear</i>
+        <i class="material-icons icons" matSuffix style="padding-right: 10px;" (click)="Removecollaborator(email)">clear</i>
     </div>
 
     <div class="row" style=" margin-top: 10px; margin-bottom: 20px;">
         <i class="material-icons" width="30px" height="30px"
             style="margin-left: 15px; margin-right: 10px; border: 2px solid rgb(122, 121, 121); border-radius: 50%; padding: 5px; color: rgb(141, 139, 139);">person_add</i>
         <input placeholder="Person or email to share with" style="font-weight: 300;" [(ngModel)]="SearchField">
-        <i class="material-icons icons" matSuffix (click)="ClearSearchField()" *ngIf="SearchField"
+        <i class="material-icons icons" matSuffix  (click)=" AddCollaborator()" *ngIf="SearchField"
             style="padding-right: 10px;">check</i>
     </div>
 </div>

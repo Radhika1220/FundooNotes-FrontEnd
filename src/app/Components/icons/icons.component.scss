@@ -6,3 +6,37 @@
     padding-bottom: 5px;
     padding-top: 0px;
 }
+
+.material-icons
+{
+
+    color: rgb(70, 68, 68);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.space
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.h4
+{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+.color
+{
+    color: rgb(180, 176, 176);
+}
+.pin
+{
+    position: absolute; 
+    top: 10px; 
+    right: 5px; 
+    margin-right: -10px; 
+    cursor: pointer;
+}

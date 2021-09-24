@@ -35,7 +35,7 @@ import { IconsComponent } from './Components/icons/icons.component';
 import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
 import { GetArchiveComponent } from './Components/get-archive/get-archive.component';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
-
+import { GetLabelsComponent } from './Components/get-labels/get-labels.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +50,9 @@ import { TrashNotesComponent } from './Components/trash-notes/trash-notes.compon
     IconsComponent,
     GetReminderComponent,
     GetArchiveComponent,
-    TrashNotesComponent
+    TrashNotesComponent,
+    GetLabelsComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

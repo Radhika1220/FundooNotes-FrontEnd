@@ -28,10 +28,12 @@ export class NotesComponent implements OnInit {
   removable = true;
   reminder:any;
   file:any;
+  image:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 
 ];
+ 
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -198,27 +200,47 @@ getMonday(d:any) {
   return new Date(d.setDate(diff));
 }
 
-OnselectFile(files: any)
+// OnSelectFile(event: any)
+// {
+//   console.log(event.target.files);
+//   this.noteService.UploadImage(this.note.noteId,event.target.files[0])
+//   .subscribe(
+//     (result: any) => 
+//     {
+//       console.log(this.note.noteId);
+//     console.log(result.message);
+//     console.log(result.status);
+
+//     },(error: HttpErrorResponse) => {
+//     console.log(error.error.message);
+//   })
+// }
+
+OnSelectFile(event: any)
 {
-  console.log(files.target.files[0]);
-  var imageFile= new File(files.target.files[0] , files.target.files[0].name);
-  this.file=imageFile;
-  console.log(this.file);
+  var files: File = event.target.files.item(0);
+  var reader = new FileReader();
+  reader.readAsDataURL(files);
+  reader.onload =(event:any)=>{
+    this.image = event.target.result;
+  console.log(files);
+   const formData = new FormData();
+    formData.append('formFile', files,files.name);
+    console.log(formData);
+    this.file = formData;
 }
-
-
+}
 UploadImage(noteId:any)
 {
+  console.log(this.file);
   this.noteService.UploadImage(noteId,this.file)
   .subscribe(
     (result: any) => 
     {
     console.log(result.message);
-    console.log(result.status);
 
     },(error: HttpErrorResponse) => {
     console.log(error.error.message);
   })
 }
-
 }
