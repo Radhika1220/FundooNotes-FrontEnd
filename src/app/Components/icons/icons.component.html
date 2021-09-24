@@ -1,5 +1,12 @@
 <div class="icons" style="margin-top: 0px; margin-bottom: 10px;">
-    <i class="material-icons" matTooltip="Remind me">notification_important</i>
+    <div class="pin">
+    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false"
+    (click)="PinNote()">push_pin</i>
+<i class="material-icons" matTooltip="UnPin"
+*ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
+</div>
+
+    <i class="material-icons" matTooltip="Remind me"   [matMenuTriggerFor]="remindermenu">notification_important</i>
     <i class="material-icons" matTooltip="Collaborator">person_add_alt_1</i>
     <i class="material-icons" matTooltip="Change Color" [matMenuTriggerFor]="ChangeColor">color_lens</i>
 
@@ -13,7 +20,44 @@
         <button mat-menu-item style="font-size: 17px;">Add Label</button>
         <button mat-menu-item style="font-size: 17px;" (click)="DeleteNote()">Delete Note</button>
     </mat-menu>
+
+    <div class="example-chip-list" appearance="fill" *ngIf="rem.length>0"
+        style="width:max-content; display: flex;">
+
+        <mat-chip *ngFor="let r of rem" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(r)" 
+            style="border-radius: 25px; padding: 5px; display: flex; margin-bottom: 5px; justify-content: center; padding-bottom: 0px; padding-left: 10px;">
+            {{r.name}}
+            <mat-icon matChipRemove *ngIf="removable"
+                style="text-align: center; cursor: pointer;">cancel</mat-icon>
+        </mat-chip>
+    </div>
+    <mat-menu #remindermenu="matMenu">
+
+        <div mat-menu-item class="space h4">
+            <h4 class="h4">Reminder:</h4>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDate('Today, 10:00PM')">
+            <p>Later Today</p>
+                <p class="color">10:00 PM</p>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDate('Tomorrow, 8:00AM')">
+            <p>Tomorrow</p>
+            <p class="color">8:00 AM</p>
+        </div>
+        <div mat-menu-item class="space" (click)="SetDate('set')">
+            <p>Next week</p>
+            <p class="color">Wed, 8:00 PM</p>
+        </div>
+        <div mat-menu-item  class="space">
+            <i class="material-icons" style="font-size:17px;">access_time</i>
+            <p class="clock">Pick date and Time</p>
+        </div>
+    </mat-menu>
+
+
 </div>
+
 <mat-menu #ChangeColor="matMenu" style="margin: 0px; padding: 2px;">
     <div style="display: flex;" *ngFor="let colorline of Colors">
         <div *ngFor="let color of colorline" style="padding: 5px;">

@@ -145,4 +145,22 @@ UnArchive(noteid:number)
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
+
+PinNote(noteId:number)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.put(`${environment.baseUrl}/api/PinNotes?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+
+UnPinNote(noteId:number)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  return this.httpService.put(`${environment.baseUrl}/api/UnPinNotes?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }
