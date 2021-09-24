@@ -1,17 +1,15 @@
 <div class="icons" style="margin-top: 0px; margin-bottom: 10px;">
     <div class="pin">
-    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false"
-    (click)="PinNote()">push_pin</i>
-<i class="material-icons" matTooltip="UnPin"
-*ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
-</div>
+    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()">push_pin</i>
+     <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
+   </div>
 
     <i class="material-icons" matTooltip="Remind me"   [matMenuTriggerFor]="remindermenu">notification_important</i>
     <i class="material-icons" matTooltip="Collaborator">person_add_alt_1</i>
     <i class="material-icons" matTooltip="Change Color" [matMenuTriggerFor]="ChangeColor">color_lens</i>
 
     <label for="image">
-        <input type="file" name="image" accept="image/*" id="image" style="display:none;" />
+        <input type="file" name="image" accept="image/*" id="image" style="display:none;"/>
         <i class="material-icons" matTooltip="Add Image">image</i>
     </label>
     <i class="material-icons" matTooltip="Archive" (click)="SetArchive()">archive</i>

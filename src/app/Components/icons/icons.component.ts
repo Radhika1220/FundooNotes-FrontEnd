@@ -187,34 +187,22 @@ PinNote()
       console.log(error.error.message);
     })
   }
-// Pin()
-//   {
-//     console.log(this.note);
-//     if(this.note.pin==true)
-//     {
-//     this.noteService.UnPinNote(this.note.noteId).subscribe((result : any) =>{
-//         console.log(result)
-//         this.openSnackBar(result.message,'');
-//       });
-        
-//     }
-//     else
-//     {
-//       this.noteService.PinNote(this.note.noteId).subscribe((result : any) =>{
-//         console.log(result)
-//         this.openSnackBar(result.message , '');
-//       },
 
-//       (error:HttpErrorResponse) => { 
-//       if(!error.error.status){            
-//          this.openSnackBar(error.error.message , '');
-//       }
-//       else
-//       {
-//         this.openSnackBar('Unsuccessful , Please Try again!' , '');
-//       }
-      
-//    });
-//     }
+  OnSelectFile(event: any)
+{
+  console.log(event.target.files);
+  this.noteService.UploadImage(this.note.noteId,event.target.files[0])
+  .subscribe(
+    (result: any) => 
+    {
+      console.log(this.note.noteId);
+    console.log(result.message);
+    console.log(result.status);
+
+    },(error: HttpErrorResponse) => 
+    {
+    console.log(error.error.message);
+  })
+}
 }
 

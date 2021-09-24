@@ -17,6 +17,7 @@ export class DashBoardComponent implements OnInit {
    ) { }
   userDetails:any;
   labels:any=[];
+  labelDetails:any;
   ngOnInit(): void {
      this.userDetails = JSON.parse(localStorage.getItem('FundooNotes')!);
      this.GetAllLabels();

@@ -32,6 +32,7 @@ export class NotesComponent implements OnInit {
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 
 ];
+ 
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -78,12 +79,12 @@ export class NotesComponent implements OnInit {
   ((result:any)=>{
   this.openSnackBar(result.message , '');
   console.log(result);
-  if(this.file != null)
-  {
-  console.log("image present");
+  // if(this.file != null)
+  // {
+  // console.log("image present");
 
-  this.UploadImage(result.noteId);
-  }
+  // this.OnSelectFile(result.noteId);
+  // }
   this.NoteForm.reset();
   this.create=false
   },
@@ -198,27 +199,19 @@ getMonday(d:any) {
   return new Date(d.setDate(diff));
 }
 
-OnselectFile(files: any)
-{
-  console.log(files.target.files[0]);
-  var imageFile= new File(files.target.files[0],files.target.files[0].name);
-  this.file=imageFile;
-  console.log(this.file);
-}
+// OnSelectFile(event: any)
+// {
+//   console.log(event.target.files);
+//   this.noteService.UploadImage(this.note.noteId,event.target.files[0])
+//   .subscribe(
+//     (result: any) => 
+//     {
+//       console.log(this.note.noteId);
+//     console.log(result.message);
+//     console.log(result.status);
 
-
-UploadImage(noteId:any)
-{
-  this.noteService.UploadImage(noteId,this.file)
-  .subscribe(
-    (result: any) => 
-    {
-    console.log(result.message);
-    console.log(result.status);
-
-    },(error: HttpErrorResponse) => {
-    console.log(error.error.message);
-  })
-}
-
+//     },(error: HttpErrorResponse) => {
+//     console.log(error.error.message);
+//   })
+// }
 }

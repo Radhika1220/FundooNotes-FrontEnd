@@ -11,6 +11,7 @@ import { GetNoteComponent } from './Components/get-note/get-note.component';
 import { GetReminderComponent } from './Components/get-reminder/get-reminder.component';
 import { IconsComponent } from './Components/icons/icons.component';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
+import { GetLabelsComponent } from './Components/get-labels/get-labels.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'get-notes',component:GetNoteComponent},
   {path:'getReminder',component:GetReminderComponent},
   {path:'trashNotes',component:TrashNotesComponent},
-  {path:'icons',component:IconsComponent}
+  {path:'icons',component:IconsComponent},
+  {path:'get-labels',component:GetLabelsComponent}
 ];
 
 @NgModule({
