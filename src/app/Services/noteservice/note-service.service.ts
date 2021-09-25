@@ -183,4 +183,22 @@ DeleteReminder(noteId:any)
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
+CreateLabelForNote(labelName:any,noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  var param={
+    LabelName:labelName,
+    NoteId:noteId
+  };
+
+  console.log("email"+param);
+  return this.httpService.post(`${environment.baseUrl}/api/CreateLabel`, param,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+
+  
+}
+
+
 }

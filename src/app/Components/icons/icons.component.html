@@ -15,7 +15,7 @@
     <i class="material-icons" matTooltip="Archive" (click)="SetArchive()">archive</i>
     <i class="material-icons" matTooltip="More" [matMenuTriggerFor]="moremenu">more_vert</i>
     <mat-menu #moremenu="matMenu" class="account-menu">
-        <button mat-menu-item style="font-size: 17px;">Add Label</button>
+        <button mat-menu-item style="font-size: 17px;" [matMenuTriggerFor]="LabelMenu" >Add Label</button>
         <button mat-menu-item style="font-size: 17px;" (click)="DeleteNote()">Delete Note</button>
     </mat-menu>
 
@@ -38,19 +38,6 @@
         </div>
     </mat-menu>
  
-    <div class="example-chip-list" appearance="fill" *ngIf="rem.length>0"
-        style="width:max-content; display: flex;">
-
-        <mat-chip *ngFor="let r of rem" [selectable]="selectable" [removable]="removable"
-            (removed)="remove(r)" 
-            style="border-radius: 25px; padding: 5px; display: flex; margin-bottom: 5px; justify-content: center; padding-bottom: 0px; padding-left: 10px;">
-            {{r.name}}
-            <mat-icon matChipRemove *ngIf="removable"
-                style="text-align: center; cursor: pointer;">cancel</mat-icon>
-        </mat-chip>
-
-    </div>
-
 
 </div>
 
@@ -59,5 +46,12 @@
         <div *ngFor="let color of colorline" style="padding: 5px;">
             <button [ngStyle]="{ 'background-color': color.color}" mat-fab style="max-width: 30px; max-height: 30px; box-shadow: none; border: 1px solid gray;"  (click)="SetColor(color.color)"></button>
         </div>
+    </div>
+</mat-menu>
+
+<mat-menu  #LabelMenu="matMenu"  (click)="$event.stopPropagation()" >
+    <div class="example-section">
+        <h4>Label Note:</h4>
+        <p *ngFor="let labels of noteLabel"><mat-checkbox (click)="AddLabelToNote(labels.labelName)">{{labels['labelName']}}</mat-checkbox></p>
     </div>
 </mat-menu>

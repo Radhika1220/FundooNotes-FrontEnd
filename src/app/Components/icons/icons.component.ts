@@ -20,6 +20,7 @@ export class IconsComponent implements OnInit
   selectable = true;
   removable = true;
   reminder:any;
+  noteLabel:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
 
@@ -266,6 +267,22 @@ SetReminder(data:any)
     {
     console.log(error.error.message);
   })
+}
+
+AddLabelToNote(labelName:any)
+{
+  console.log("hello");
+  this.noteService.CreateLabelForNote(labelName,this.note.noteId)
+  .subscribe(
+    (status: any) => 
+    {
+    console.log("Label" +status.data);
+    this.noteLabel=status.data;
+
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
+
 }
 }
 
