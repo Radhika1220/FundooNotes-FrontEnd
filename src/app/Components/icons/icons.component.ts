@@ -19,6 +19,8 @@ export class IconsComponent implements OnInit
   pickDate:boolean=false;
   selectable = true;
   removable = true;
+  image:any;
+  file:any;
   reminder:any;
   noteLabel:any;
   monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -192,22 +194,7 @@ PinNote()
     })
   }
 
-  OnSelectFile(event: any)
-{
-  console.log(event.target.files);
-  this.noteService.UploadImage(this.note.noteId,event.target.files[0])
-  .subscribe(
-    (result: any) => 
-    {
-      console.log(this.note.noteId);
-    console.log(result.message);
-    console.log(result.status);
 
-    },(error: HttpErrorResponse) => 
-    {
-    console.log(error.error.message);
-  })
-}
 
 public date = new Date();
 
@@ -283,6 +270,51 @@ AddLabelToNote(labelName:any)
     console.log(error.error.message);
   })
 
+}
+OnSelectFile(event: any)
+{
+  var files: File = event.target.files.item(0);
+  var reader = new FileReader();
+  reader.readAsDataURL(files);
+  reader.onload =(event:any)=>{
+    this.image = event.target.result;
+  console.log(files);
+   const formData = new FormData();
+    formData.append('image', files,files.name);
+    console.log(formData);
+    this.file = formData;
+    this.UploadImage();
+}
+}
+UploadImage()
+{
+  console.log(this.file);
+  this.noteService.UploadImage(this.note.noteId,this.file)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.message);
+
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
+}
+
+RemoveImage()
+{
+  console.log(this.note.noteId);
+  this.noteService.RemoveImage(this.note.noteId)
+  .subscribe(
+    (result: any) => 
+    {
+    console.log(result.message);
+    this.openSnackBar(result.message,'');
+
+    }
+    ,
+    (error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  })
 }
 }
 

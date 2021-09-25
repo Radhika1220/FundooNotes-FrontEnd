@@ -3,14 +3,16 @@
     <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()">push_pin</i>
      <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
    </div>
-
+   <i class="material-icons hovers" style="cursor:pointer; position: absolute; top:100px; right: 5px;"
+   *ngIf="note.image != null" (click)="RemoveImage()">delete</i>
     <i class="material-icons" matTooltip="Remind me" [matMenuTriggerFor]="remindermenus">notification_important</i>
     <i class="material-icons" matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
     <i class="material-icons" matTooltip="Change Color" [matMenuTriggerFor]="ChangeColor">color_lens</i>
 
     <label for="image">
-        <input type="file" name="image" accept="image/*" id="image" style="display:none;"/>
+        <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="OnSelectFile($event)"/>
         <i class="material-icons" matTooltip="Add Image">image</i>
+
     </label>
     <i class="material-icons" matTooltip="Archive" (click)="SetArchive()">archive</i>
     <i class="material-icons" matTooltip="More" [matMenuTriggerFor]="moremenu">more_vert</i>

@@ -199,6 +199,14 @@ CreateLabelForNote(labelName:any,noteId:any)
 
   
 }
-
+RemoveImage(noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+ 
+  return this.httpService.put(`${environment.baseUrl}/api/RemoveImage?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 
 }
