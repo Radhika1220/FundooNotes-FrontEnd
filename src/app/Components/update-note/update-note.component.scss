@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+  ::ng-deep .mat-drawer-content{
+      overflow:unset;
+  } 
+  .title{
+      font-size: 16px;
+      flex-grow: 12;
+      padding-top: 10px;
+  }
+  
+.icons{
+      display: flex;
+      flex-grow: 3;
+      justify-content: space-around;
+    }
+    .mat-expansion-panel-header-description {
+        display: unset;
+        margin-right: 0;
+    }
+    mat-card{
+        display: flex;
+        flex-direction: row;
+        min-width:505px;
+        align-items: center;
+        border-radius: 10px;
+        height: 100%;
+        form{
+            width: 100%;
+        }
+        
+    }
+    .mat-card:not([class*=mat-elevation-z]) {
+        box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    }
+    .textarea
+    {
+        border: none;
+        font-size: 16px;
+        margin-left: 0px;
+        outline: none;
+        width: 100%;
+    }
+    .big-card-title
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .big-card-content
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    :ng-deep .mat-card-footer
+    {
+        width: 100%;
+    }
+    .reminderLabel
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #EBEBEB;
+        font-size: 10px;
+        width: fit-content;
+        max-height: 25px;
+        border-radius: 15px;
+        margin-left: 14px;
+        p{
+            margin-top: 10px;
+        }
+        mat-icon{
+            font-size: 17px;
+            margin-left: 3px;
+            margin-top: 5px;
+        }
+    }
+.cursor:hover
+{
+    cursor: pointer;
+}  
+.foot
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}  
+::ng-deep .dialog-container-custom .mat-dialog-container 
+{
+    border-radius: 7px;
+    padding: 0px 0px 0px 0px!important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}

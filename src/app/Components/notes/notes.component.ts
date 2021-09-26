@@ -80,12 +80,15 @@ export class NotesComponent implements OnInit {
   ((result:any)=>{
   this.openSnackBar(result.message , '');
   console.log(result);
+  console.log("image present");
+  console.log(result.noteId);
   if(this.file != null)
   {
-  console.log("image present");
-
+  // console.log("image present");
+  // console.log(result.noteId);
   this.UploadImage(result.noteId);
   }
+
   this.NoteForm.reset();
   this.create=false
   },
@@ -225,7 +228,7 @@ OnSelectFile(event: any)
     this.image = event.target.result;
   console.log(files);
    const formData = new FormData();
-    formData.append('formFile', files,files.name);
+    formData.append('image', files,files.name);
     console.log(formData);
     this.file = formData;
 }

@@ -12,6 +12,7 @@ import { GetReminderComponent } from './Components/get-reminder/get-reminder.com
 import { IconsComponent } from './Components/icons/icons.component';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { GetLabelsComponent } from './Components/get-labels/get-labels.component';
+// import { UpdateNoteComponent } from './Components/update-note/update-note.component';
 var data =localStorage.getItem('forgot-password');
 var token=data==null?' ':JSON.parse(data).token;
 const routes: Routes = [

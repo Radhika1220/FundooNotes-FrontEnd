@@ -36,6 +36,7 @@ import { GetReminderComponent } from './Components/get-reminder/get-reminder.com
 import { GetArchiveComponent } from './Components/get-archive/get-archive.component';
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { GetLabelsComponent } from './Components/get-labels/get-labels.component';
+import { UpdateNoteComponent } from './Components/update-note/update-note.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { GetLabelsComponent } from './Components/get-labels/get-labels.component
     GetArchiveComponent,
     TrashNotesComponent,
     GetLabelsComponent,
+    UpdateNoteComponent,
 
   ],
   imports: [

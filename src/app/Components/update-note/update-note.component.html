@@ -1,0 +1,27 @@
+<mat-dialog-content class="bigCard">
+    <mat-card [style.background-color]="note.data.color">
+        <form [formGroup]="EditNoteForm">
+            <mat-card-title class="big-card-title">
+                <textarea cdkTextareaAutosize placeholder="Title" class="textarea" formControlName="Title"
+                    [style.background-color]="note.data.color" [(ngModel)]='note.data.title'></textarea>
+            </mat-card-title>
+            <mat-card-content class="big-card-content">
+                <textarea cdkTextareaAutosize placeholder="Take a Note..." class="textarea"
+                    formControlName="Description" [style.background-color]="note.data.color" [(ngModel)]='note.data.description'></textarea>
+            </mat-card-content> 
+        </form>
+    </mat-card>
+    <mat-card-footer>
+        <span *ngIf="note.data.reminder!=null" class="reminderLabel">
+            <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+            <p>{{note.data.reminder}}</p>
+            <mat-icon mat-list-icon class="material-icons-outlined cursor" (click)="DeleteReminder(note.data)">close
+            </mat-icon>
+        </span>
+        <div class="foot">
+            <app-icons [note]="note.data"></app-icons>
+        <button mat-button (click)="Close(note.data)">Close</button>
+        </div>
+    </mat-card-footer>
+
+</mat-dialog-content>

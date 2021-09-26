@@ -149,6 +149,7 @@ UnArchive(noteid:number)
 PinNote(noteId:number)
 {
   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+
   return this.httpService.put(`${environment.baseUrl}/api/PinNotes?noteId=${noteId}`,null,true,
   {
     headers: {Authorization:"Bearer "+user.Token}
@@ -179,6 +180,46 @@ DeleteReminder(noteId:any)
   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
  
   return this.httpService.put(`${environment.baseUrl}/api/ChangeReminder?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+CreateLabelForNote(labelName:any,noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  var param={
+    LabelName:labelName,
+    NoteId:noteId
+  };
+
+  console.log("email"+param);
+  return this.httpService.post(`${environment.baseUrl}/api/CreateLabel`, param,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+
+  
+}
+RemoveImage(noteId:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+ 
+  return this.httpService.put(`${environment.baseUrl}/api/RemoveImage?noteId=${noteId}`,null,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
+UpdateNote(data:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  const param= 
+  {
+      Title :data.title,
+      Description:data.description,
+  
+      NoteId:data.noteId
+  }
+  return this.httpService.put(`${environment.baseUrl}/api/UpdateNotes`,param,true,
   {
     headers: {Authorization:"Bearer "+user.Token}
   });

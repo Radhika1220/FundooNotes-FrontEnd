@@ -1,21 +1,23 @@
 <div class="icons" style="margin-top: 0px; margin-bottom: 10px;">
     <div class="pin">
-    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()">push_pin</i>
-     <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
+    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()" style="padding-top: 10px">push_pin</i>
+     <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()" style="padding-top: 10px">push_pin</i>
    </div>
-
+   <i class="material-icons hovers" style="cursor:pointer; position: absolute; top:100px; right: 5px;"
+   *ngIf="note.image != null" (click)="RemoveImage()">delete</i>
     <i class="material-icons" matTooltip="Remind me" [matMenuTriggerFor]="remindermenus">notification_important</i>
     <i class="material-icons" matTooltip="Collaborator" (click)="openDialog()">person_add_alt_1</i>
     <i class="material-icons" matTooltip="Change Color" [matMenuTriggerFor]="ChangeColor">color_lens</i>
 
     <label for="image">
-        <input type="file" name="image" accept="image/*" id="image" style="display:none;"/>
+        <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="OnSelectFile($event)"/>
         <i class="material-icons" matTooltip="Add Image">image</i>
+
     </label>
     <i class="material-icons" matTooltip="Archive" (click)="SetArchive()">archive</i>
     <i class="material-icons" matTooltip="More" [matMenuTriggerFor]="moremenu">more_vert</i>
     <mat-menu #moremenu="matMenu" class="account-menu">
-        <button mat-menu-item style="font-size: 17px;">Add Label</button>
+        <button mat-menu-item style="font-size: 17px;" [matMenuTriggerFor]="LabelMenu" >Add Label</button>
         <button mat-menu-item style="font-size: 17px;" (click)="DeleteNote()">Delete Note</button>
     </mat-menu>
 
@@ -38,26 +40,20 @@
         </div>
     </mat-menu>
  
-    <div class="example-chip-list" appearance="fill" *ngIf="rem.length>0"
-        style="width:max-content; display: flex;">
-
-        <mat-chip *ngFor="let r of rem" [selectable]="selectable" [removable]="removable"
-            (removed)="remove(r)" 
-            style="border-radius: 25px; padding: 5px; display: flex; margin-bottom: 5px; justify-content: center; padding-bottom: 0px; padding-left: 10px;">
-            {{r.name}}
-            <mat-icon matChipRemove *ngIf="removable"
-                style="text-align: center; cursor: pointer;">cancel</mat-icon>
-        </mat-chip>
-
-    </div>
-
 
 </div>
 
-<mat-menu #ChangeColor="matMenu" style="margin: 0px; padding: 2px;">
+<mat-menu #ChangeColor="matMenu" style=" padding: -100x; margin-left: -100px;">
     <div style="display: flex;" *ngFor="let colorline of Colors">
         <div *ngFor="let color of colorline" style="padding: 5px;">
             <button [ngStyle]="{ 'background-color': color.color}" mat-fab style="max-width: 30px; max-height: 30px; box-shadow: none; border: 1px solid gray;"  (click)="SetColor(color.color)"></button>
         </div>
+    </div>
+</mat-menu>
+
+<mat-menu  #LabelMenu="matMenu"  (click)="$event.stopPropagation()" >
+    <div class="example-section">
+        <h4>Label Note:</h4>
+        <p *ngFor="let labels of labels"><mat-checkbox (click)="AddLabelToNote(labels.labelName)">{{labels['labelName']}}</mat-checkbox></p>
     </div>
 </mat-menu>
