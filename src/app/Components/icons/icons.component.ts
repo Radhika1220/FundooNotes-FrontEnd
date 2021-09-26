@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { CollaboratorDialogBoxComponent } from 'src/app/Components/collaborator-dialog-box/collaborator-dialog-box.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { LabelServiceService } from '../../Services/LabelService/label-service.service';
 export interface Remainder {
   name: string;
 }
@@ -44,12 +45,25 @@ export class IconsComponent implements OnInit
   }
   constructor( private noteService:NoteServiceService,
     private snackBar:MatSnackBar,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    private labelService:LabelServiceService) { }
     @Input() note!:any;
+    labels:any=[];
     expand!:any;
   ngOnInit(): void {
-   
+   this.GetAllLabels();
   }
+
+  GetAllLabels()
+  {
+     this.noteService.GetAllLabels().subscribe((result: any) => {
+       console.log(result.data);
+      this.labels=result.data;
+      console.log(this.labels);
+    });
+  }
+
+  
 Colors = [ [
     { color: "white", tip: "white" },
     { color: "#F28B82", tip: "Red" },
@@ -193,7 +207,21 @@ PinNote()
       console.log(error.error.message);
     })
   }
-
+  // GetLabelUsingUserId()
+  // {
+  //   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  //   this.labelService.GetLabel(this.note.noteId,user.key)
+  //   .subscribe(
+  //     (result: any) => 
+  //     {
+  //     console.log("Label"+result.data);
+  //     this.noteLabel=result.data;
+  
+  //     },(error: HttpErrorResponse) => {
+  //     console.log(error.error.message);
+  //   })
+  
+  // }
 
 
 public date = new Date();
@@ -232,14 +260,14 @@ getMonday(d:any) {
   return new Date(d.setDate(diff));
 }
 
-openDialog()
-{
-  let dialogRef =this.dialog.open(CollaboratorDialogBoxComponent);
-  dialogRef.afterClosed().subscribe((result: any)=>
-    {
-      console.log( `Dialog res: ${result}`);
-    });
-}
+// openDialog()
+// {
+//   let dialogRef =this.dialog.open(CollaboratorDialogBoxComponent);
+//   dialogRef.afterClosed().subscribe((result: any)=>
+//     {
+//       console.log( `Dialog res: ${result}`);
+//     });
+// }
 SetReminder(data:any)
 {
 
@@ -316,5 +344,25 @@ RemoveImage()
     console.log(error.error.message);
   })
 }
+
+
+
+
+collaboratorArray=[];
+
+openDialog()
+{
+  console.log(this.collaboratorArray);
+  let dialogRef =this.dialog.open(CollaboratorDialogBoxComponent,{data:{collab: this.collaboratorArray, noteId:this.note.noteId, element:1}});
+  dialogRef.afterClosed().subscribe(result =>
+    {
+      console.log( `Dialog result: ${result}`);
+      this.collaboratorArray = result;
+    });
+
 }
+
+}
+
+
 

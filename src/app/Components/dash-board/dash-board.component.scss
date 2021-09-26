@@ -10,6 +10,11 @@
     
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+// .search
+// {
+//     border-style: none; 
+//     background-color: white; 
+// }
 .divider
 {
     margin-bottom: 10px;
@@ -90,6 +95,8 @@ mat-icon:not(:last-child):after,.material-icons:hover
 .search-icon
 {
     outline: none;
+    border-style: none; 
+    background-color: white; 
 }
 .search{
     margin-top: 30px;

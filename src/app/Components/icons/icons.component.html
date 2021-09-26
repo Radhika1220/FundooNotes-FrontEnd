@@ -1,7 +1,7 @@
 <div class="icons" style="margin-top: 0px; margin-bottom: 10px;">
     <div class="pin">
-    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()">push_pin</i>
-     <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()">push_pin</i>
+    <i class="material-icons" matTooltip="Pin" *ngIf="note.pin == false" (click)="PinNote()" style="padding-top: 10px">push_pin</i>
+     <i class="material-icons" matTooltip="UnPin" *ngIf="note.pin == true" (click)="UnPinNote()" style="padding-top: 10px">push_pin</i>
    </div>
    <i class="material-icons hovers" style="cursor:pointer; position: absolute; top:100px; right: 5px;"
    *ngIf="note.image != null" (click)="RemoveImage()">delete</i>
@@ -43,7 +43,7 @@
 
 </div>
 
-<mat-menu #ChangeColor="matMenu" style="margin: 0px; padding: 2px;">
+<mat-menu #ChangeColor="matMenu" style=" padding: -100x; margin-left: -100px;">
     <div style="display: flex;" *ngFor="let colorline of Colors">
         <div *ngFor="let color of colorline" style="padding: 5px;">
             <button [ngStyle]="{ 'background-color': color.color}" mat-fab style="max-width: 30px; max-height: 30px; box-shadow: none; border: 1px solid gray;"  (click)="SetColor(color.color)"></button>
@@ -54,6 +54,6 @@
 <mat-menu  #LabelMenu="matMenu"  (click)="$event.stopPropagation()" >
     <div class="example-section">
         <h4>Label Note:</h4>
-        <p *ngFor="let labels of noteLabel"><mat-checkbox (click)="AddLabelToNote(labels.labelName)">{{labels['labelName']}}</mat-checkbox></p>
+        <p *ngFor="let labels of labels"><mat-checkbox (click)="AddLabelToNote(labels.labelName)">{{labels['labelName']}}</mat-checkbox></p>
     </div>
 </mat-menu>

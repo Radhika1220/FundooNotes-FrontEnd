@@ -20,10 +20,10 @@
                     <i class="material-icons icons" *ngIf="!isGrid" (click)="isGrid=true">view_list</i>
                     <i class="material-icons icons" *ngIf="isGrid" (click)="isGrid=false">grid_view</i>
                 </div>
-                <mat-icon class="icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+                <mat-icon class="icon" [matMenuTriggerFor]="menu" >account_circle</mat-icon>
                 <mat-menu #menu="matMenu" class="account-menu">
-                    <img src="../assets/acc.png" width="60px" height="60px" style="margin-top: 25px;">
-                     <p >{{userDetails.FirstName}} {{userDetails.LastName}}</p>
+                    <img src="../assets/acc.png" width="60px" height="60px" style="margin-top: 25px; ">
+                     <p style="font-weight: bold;">{{userDetails.FirstName}} {{userDetails.LastName}}</p>
                     <p class="email ">{{userDetails.Email}}</p>
                     <mat-divider style="width: 100%; margin: 0px; padding: 0px;"></mat-divider>
                     <button mat-raised-button (click)="Logout()">Logout</button>

@@ -19,47 +19,38 @@ constructor(public dialogRef: MatDialogRef<CollaboratorDialogBoxComponent>,
  
 ) { }
   userDetails =  JSON.parse(localStorage.getItem('FundooNotes')!); 
-  emailsId:string[]=[]
+  emailId:string[]=[]
+  collabData:any;
   ngOnInit(): void {
+    console.log(this.data.collab);
+    this.GetCollab();
+    // if( this.data.collab != null)
+    // {
+    //   this.emailId=this.data.collab;
+    // }
   }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  
 
   onClick(): void {
     this.dialogRef.close();
   }
 
-  ClearSearchField() {
-console.log(this.emailsId);
-this.emailsId.push(this.SearchField);
-console.log(this.emailsId);
-    this.SearchField = '';
-  }
 
   RemoveCollaborator(email:any)
   {
-    this.emailsId.splice(this.emailsId.indexOf(email),1);
+    this.emailId.splice(this.emailId.indexOf(email),1);
   }
+  Save(){
+    this.dialogRef.close(this.data.collab);
+ }
+ Close(){
+   this.dialogRef.close(this.data.collab);
+ }
 
-  AddCollaborator()
-  {
-    this.collaboratorService.AddCollaborator(this.data)
-    .subscribe((result : any)=>
-    {
-       console.log(result);
-      this.openSnackBar(result.message , '');
-       this.ngOnInit();
-      this.data.email="";
-    },
-    (error:HttpErrorResponse) => { 
-    if(!error.error.status){            
-       this.openSnackBar(error.error.message , '');
-    }
-    else
-    {
-      this.openSnackBar('UnSuccessfull, Please Try again!' , '');
-    }
-    
- });
-}
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 5000,
@@ -68,25 +59,82 @@ console.log(this.emailsId);
     });
   }
 
-  Removecollaborator(col:any)
+
+
+clearSearchField() {
+  console.log(this.emailId);
+  if(this.data.element == 1)
   {
-    console.log(col);
-    this.collaboratorService.RemoveCollaborator(col.collaboratorId)
-    .subscribe((result:any)=>
-    {
-      console.log(result);
-      this.openSnackBar(result.message , '');
-      this.ngOnInit();
-    },
-    (error:HttpErrorResponse) => { 
-    if(!error.error.status){            
-       this.openSnackBar(error.error.message , '');
+    this.AddCollab(this.SearchField);
+  }
+  this.emailId.push(this.SearchField);
+  console.log(this.emailId);
+      this.SearchField = '';
     }
-    else
+
+
+    AddCollab(element:any)
+  {
+    // console.log(this.data);
+    // console.log(this.data.noteId);
+    // console.log("add collab");
+    this.collaboratorService.AddCollaborator(element,this.data.noteId)
+    .subscribe(
+      (status: any) => 
+      {
+        // this.data.changeMessage(true);
+        this.ngOnInit();
+      console.log(status.notesId);
+      this.openSnackBar(status.message,'');
+      },(error: HttpErrorResponse) => {
+      console.log(error.error.message);
+    })
+  
+  }
+
+  GetCollab()
+{
+  console.log(this.data.noteId);
+  this.collaboratorService.GetCollaborator(this.data.noteId)
+  .subscribe(
+    (status: any) => 
     {
-      this.openSnackBar('Unsuccessfull , Try again!' , '');
-    }
-    
- });
+      console.log(status.data);
+      this.emailId=[];
+      if(status.data != null)
+      {
+        status.data.forEach((element:any) => {
+          this.emailId.push(element.cEmailId);
+        });
+        this.collabData=status.data;
+      }
+
+    console.log(status.data);
+    },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+  });
 }
+
+RemoveCollabs(email:any)
+{
+
+  this.collabData.forEach((element:any) => {
+
+    if(element.cEmailId == email)
+    {
+      this.collaboratorService.RemoveCollaborator(element.cId)
+      .subscribe(
+        (result: any) => 
+        {
+          this.ngOnInit();
+          this.openSnackBar(result.message,'');
+        console.log(result.data);
+        }
+        ,(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+      });
+    }
+  });
+}
+
 }

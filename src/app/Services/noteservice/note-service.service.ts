@@ -149,6 +149,7 @@ UnArchive(noteid:number)
 PinNote(noteId:number)
 {
   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+
   return this.httpService.put(`${environment.baseUrl}/api/PinNotes?noteId=${noteId}`,null,true,
   {
     headers: {Authorization:"Bearer "+user.Token}
@@ -208,5 +209,19 @@ RemoveImage(noteId:any)
     headers: {Authorization:"Bearer "+user.Token}
   });
 }
-
+UpdateNote(data:any)
+{
+  var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  const param= 
+  {
+      Title :data.title,
+      Description:data.description,
+  
+      NoteId:data.noteId
+  }
+  return this.httpService.put(`${environment.baseUrl}/api/UpdateNotes`,param,true,
+  {
+    headers: {Authorization:"Bearer "+user.Token}
+  });
+}
 }

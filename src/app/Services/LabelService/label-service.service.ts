@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpServiceService } from '../HttpService/http-service.service';
 import { environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,13 @@ export class LabelServiceService {
       headers: {Authorization:"Bearer "+user.Token}
     });
   }
+  // GetLabel(noteId:number,userId:number)
+  // {
+  
+  //   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+  //   return this.httpService.get(`${environment.baseUrl}/api/GetLabelByNotes?noteId=${noteId}&userId=${userId}`,true,
+  //   {
+  //     headers: {Authorization:"Bearer "+user.Token}
+  //   });
+  // }
 }

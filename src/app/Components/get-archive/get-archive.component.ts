@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
   selector: 'app-get-archive',
   templateUrl: './get-archive.component.html',
@@ -10,8 +12,11 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 export class GetArchiveComponent implements OnInit {
   pinned:boolean=true;
   archiveNotes!:any[];
+  
+  note:any;
   constructor(private noteService:NoteServiceService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.GetArchive();
@@ -51,5 +56,17 @@ export class GetArchiveComponent implements OnInit {
     },(error: HttpErrorResponse) => {
     console.log(error.error.message);
   })
+}
+
+openDialog(note:any)
+{
+  console.log(note);
+  
+  const dialogConfig = new MatDialogConfig();
+  this.dialog.open(UpdateNoteComponent, {
+    panelClass: 'dialog-container-custom',
+     data: {
+    data: note
+  }});
 }
 }

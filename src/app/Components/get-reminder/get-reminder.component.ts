@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
   selector: 'app-get-reminder',
   templateUrl: './get-reminder.component.html',
@@ -11,7 +13,8 @@ export class GetReminderComponent implements OnInit {
   reminderNotes!:any[];
   pinned:boolean=true;
   constructor(private noteService:NoteServiceService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.GetReminder();
@@ -50,5 +53,17 @@ DeleteReminder(note:any)
     },(error: HttpErrorResponse) => {
     console.log(error.error.message);
   })
+}
+
+openDialog(note:any)
+{
+  console.log(note);
+  
+  const dialogConfig = new MatDialogConfig();
+  this.dialog.open(UpdateNoteComponent, {
+    panelClass: 'dialog-container-custom',
+     data: {
+    data: note
+  }});
 }
 }

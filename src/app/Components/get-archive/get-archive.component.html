@@ -2,13 +2,13 @@
     <mat-card [ngStyle]="{'background-color': note.color}"  *ngFor="let note of archiveNotes" >
         <img src='{{note.image}}' alt='' style="margin-bottom: 5px;" *ngIf=" note.image != null">
         <div class="content">
-        <div class="row">
-            <h2 style="margin-bottom: -5px; margin-top: -5px;">{{note.title}}</h2>
+        <div class="row" (click)="openDialog(note)">
+            <h2 style="margin-bottom: -5px; margin-top: -5px;font-weight:bold;font-size:20px">{{note.title}}</h2>
             <!-- <i class="material-icons";matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
             <i class="material-icons" matTooltip="Pin" *ngIf="pinned" (click)="PinNote()" style="color:gray">push_pin</i> -->
         </div>
-        <div style="margin: 20px;">
-            <p style="margin-top: -15px;">{{note.description}}</p>
+        <div style="margin: 20px;" (click)="openDialog(note)">
+            <p style="margin-top: -15px;font-size:18px ">{{note.description}}</p>
         </div>
         <div class="archive">
             <!-- <i class="material-icons"  style="font-size: medium; 
