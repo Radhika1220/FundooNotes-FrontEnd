@@ -47,6 +47,7 @@ export class GetArchiveComponent implements OnInit {
 
   DeleteReminder(note:any)
 {
+  this.GetArchive();
   console.log(note.notesId);
   this.noteService.DeleteReminder(note.noteId)
   .subscribe(

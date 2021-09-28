@@ -49,6 +49,7 @@ DeleteReminder(note:any)
   .subscribe(
     (result: any) => 
     {
+      this.GetNotes();
     console.log(result.data);
     },(error: HttpErrorResponse) => {
     console.log(error.error.message);
@@ -59,7 +60,7 @@ DeleteReminder(note:any)
 openDialog(note:any)
 {
   console.log(note);
-  
+  this.GetNotes();
   const dialogConfig = new MatDialogConfig();
   this.dialog.open(UpdateNoteComponent, {
     panelClass: 'dialog-container-custom',

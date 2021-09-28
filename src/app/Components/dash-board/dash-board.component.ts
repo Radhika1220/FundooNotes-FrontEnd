@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NoteServiceService } from 'src/app/Services/noteservice/note-service.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EditLabelComponent } from 'src/app/edit-label/edit-label.component';
 
 @Component({
   selector: 'app-dash-board',
@@ -13,7 +15,8 @@ export class DashBoardComponent implements OnInit {
   getnotes="Notes";
    constructor(
     private noteService:NoteServiceService,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog
    ) { }
   userDetails:any;
   labels:any=[];
@@ -38,4 +41,13 @@ export class DashBoardComponent implements OnInit {
       console.log(this.labels);
     });
   }
+
+  openDialog()
+  {
+    let dialogRef =this.dialog.open(EditLabelComponent);
+    dialogRef.afterClosed().subscribe(result =>
+      {
+  
+      });
+}
 }

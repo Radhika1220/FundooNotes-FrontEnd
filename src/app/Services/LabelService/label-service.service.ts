@@ -32,4 +32,45 @@ export class LabelServiceService {
   //     headers: {Authorization:"Bearer "+user.Token}
   //   });
   // }
-}
+
+  EditLabel(label:any)
+  {
+    console.log(label);
+    var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+    return this.httpService.post(`${environment.baseUrl}/api/EditLabel?`,label,true,
+    {
+      headers: {Authorization:"Bearer "+user.Token}
+    });
+  }
+
+  DeleteLabel(data:any)
+  {
+    var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+    console.log("heloo");
+    
+    // const param= 
+    // {
+    //  LabelId:data.labelId,
+    //  LabelName:data.labelName,
+    //  UserId:user.key
+    // }
+    // console.log(param);
+    var headers={Authorization:"Bearer "+user.Token};
+    return this.httpService.delete(`${environment.baseUrl}/api/DeleteLabel?labelId=${data.labelId}`,null,true,headers);
+  }
+  AddLabel(labelName:string)
+  {
+    var user = JSON.parse(localStorage.getItem('FundooNotes')!);
+    let params = {
+      LabelName:labelName,
+      UserId: user.key
+    };
+    console.log(labelName);
+    return this.httpService.post(`${environment.baseUrl}/api/AddLabel`, params,true,
+    {
+     
+        headers: {Authorization:"Bearer "+user.Token}
+      });
+    }
+  }
+  

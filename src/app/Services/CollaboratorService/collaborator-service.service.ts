@@ -27,7 +27,7 @@ export class CollaboratorServiceService {
 RemoveCollaborator(collaboratorId:any)
 {
   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
-  return this.httpService.delete(`${environment.baseUrl}/api/DeleteCollaborator?collaboratorId=${collaboratorId}`,true,
+  return this.httpService.delete(`${environment.baseUrl}/api/DeleteCollaborator?collaboratorId=${collaboratorId}`,null,true,
   {
     headers: {Authorization:"Bearer "+user.Token}
   });

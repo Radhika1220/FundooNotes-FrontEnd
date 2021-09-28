@@ -73,7 +73,7 @@ GetTrash()
 DeleteTrash(noteId:any)
 {
   var user = JSON.parse(localStorage.getItem('FundooNotes')!);
-  return this.httpService.delete(`${environment.baseUrl}/api/DeleteNotes?noteId=${noteId}`,true,
+  return this.httpService.delete(`${environment.baseUrl}/api/DeleteNotes?noteId=${noteId}`,null,true,
  {
   headers: {Authorization:"Bearer "+user.Token}
  });
@@ -103,7 +103,7 @@ UploadImage(noteId:any,file:any)
 EmptyTrash()
 {
   var user = JSON.parse(localStorage.getItem('FundooNotes')!); 
-  return this.httpService.delete(`${environment.baseUrl}/api/EmptyTrash?userId=${user.key}`,true,
+  return this.httpService.delete(`${environment.baseUrl}/api/EmptyTrash?userId=${user.key}`,null,true,
   {
    headers: {Authorization:"Bearer "+user.Token}
   });

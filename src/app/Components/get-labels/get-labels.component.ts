@@ -21,6 +21,7 @@ export class GetLabelsComponent implements OnInit {
   .subscribe(
     (result: any) => 
     {
+      this.GetLabelNote();
       console.log(this.labelDetails);
     console.log(result.data);
     this.labelNotes=result.data;
