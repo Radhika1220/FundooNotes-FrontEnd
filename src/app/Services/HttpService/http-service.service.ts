@@ -21,9 +21,16 @@ export class HttpServiceService {
   {
      return this.http.get(url,isHeaderRequired && headers)
   }
-  delete(url: string,isHeaderRequired: any=false, headers:any= null)
+  delete(url: string,data:any=null,isHeaderRequired: any=false, headers:any= null)
   { 
-
+console.log(data);
     return this.http.delete(url,isHeaderRequired && headers);
+
   }
+  // Delete(url: string,data:any=null,isHeaderRequired: any=false, headers:any= null)
+  // { 
+
+  //   return this.http.delete(url,isHeaderRequired && headers);
+  // }
+  
 }

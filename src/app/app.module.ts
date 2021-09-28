@@ -37,6 +37,7 @@ import { GetArchiveComponent } from './Components/get-archive/get-archive.compon
 import { TrashNotesComponent } from './Components/trash-notes/trash-notes.component';
 import { GetLabelsComponent } from './Components/get-labels/get-labels.component';
 import { UpdateNoteComponent } from './Components/update-note/update-note.component';
+import { EditLabelComponent } from './edit-label/edit-label.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { UpdateNoteComponent } from './Components/update-note/update-note.compon
     TrashNotesComponent,
     GetLabelsComponent,
     UpdateNoteComponent,
+    EditLabelComponent,
 
   ],
   imports: [

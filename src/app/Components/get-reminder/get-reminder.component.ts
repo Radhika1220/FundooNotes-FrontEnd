@@ -44,6 +44,7 @@ export class GetReminderComponent implements OnInit {
 
 DeleteReminder(note:any)
 {
+  this.GetReminder();
   console.log(note.notesId);
   this.noteService.DeleteReminder(note.noteId)
   .subscribe(
