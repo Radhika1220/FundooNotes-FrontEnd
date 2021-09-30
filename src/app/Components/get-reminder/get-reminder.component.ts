@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 @Component({
   selector: 'app-get-reminder',
   templateUrl: './get-reminder.component.html',
@@ -14,10 +15,17 @@ export class GetReminderComponent implements OnInit {
   pinned:boolean=true;
   constructor(private noteService:NoteServiceService,
     private snackBar: MatSnackBar,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    private data:DataserviceService) { }
 
   ngOnInit(): void {
     this.GetReminder();
+    this.data.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.GetReminder();
+        this.data.changeMessage(false);
+      }
+  })
   }
   GetReminder()
   {

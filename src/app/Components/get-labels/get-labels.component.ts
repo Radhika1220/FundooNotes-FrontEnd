@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LabelServiceService } from '../../Services/LabelService/label-service.service';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 @Component({
   selector: 'app-get-labels',
   templateUrl: './get-labels.component.html',
@@ -8,11 +9,18 @@ import { LabelServiceService } from '../../Services/LabelService/label-service.s
 })
 export class GetLabelsComponent implements OnInit {
 
-  constructor(private labelService: LabelServiceService) { }
+  constructor(private labelService: LabelServiceService,
+    private data:DataserviceService) { }
   @Input() labelDetails: any
   labelNotes!:any[];
   ngOnInit(): void {
     this.GetLabelNote();
+    this.data.currentMessage.subscribe((change:any)=>{
+      if(change == true){
+        this.GetLabelNote();
+        this.data.changeMessage(false);
+      }
+  })
   }
   GetLabelNote()
   {

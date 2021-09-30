@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
 @Component({
   selector: 'app-trash-notes',
@@ -10,10 +11,17 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 export class TrashNotesComponent implements OnInit {
 trashNotes!:any[];
   constructor(private noteService:NoteServiceService,
-    public _snackBar: MatSnackBar) { }
+    public _snackBar: MatSnackBar,
+    private data: DataserviceService) { }
 
   ngOnInit(): void {
     this.GetTrash();
+    this.data.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.GetTrash();
+        this.data.changeMessage(false);
+      }
+  })
   }
   GetTrash()
   {
@@ -35,6 +43,7 @@ trashNotes!:any[];
   .subscribe(
     (result: any) => 
     {
+      this.data.changeMessage(true);
     console.log(result.data);
     console.log(result.status);
     },(error: HttpErrorResponse) => {
@@ -49,6 +58,7 @@ trashNotes!:any[];
     .subscribe(
       (result: any) => 
       {
+        this.data.changeMessage(true);
         console.log(result);
        this.trashNotes=result.data;
        console.log(this.trashNotes)
@@ -66,6 +76,7 @@ trashNotes!:any[];
     .subscribe(
       (result: any) => 
       {
+        this.data.changeMessage(true);
       console.log(result.status);
       this.openSnackBar(result.message);
 

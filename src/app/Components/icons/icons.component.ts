@@ -6,6 +6,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { CollaboratorDialogBoxComponent } from 'src/app/Components/collaborator-dialog-box/collaborator-dialog-box.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LabelServiceService } from '../../Services/LabelService/label-service.service';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 export interface Remainder {
   name: string;
 }
@@ -46,12 +47,18 @@ export class IconsComponent implements OnInit
   constructor( private noteService:NoteServiceService,
     private snackBar:MatSnackBar,
     private dialog:MatDialog,
-    private labelService:LabelServiceService) { }
+    private labelService:LabelServiceService,
+    private data:DataserviceService) { }
     @Input() note!:any;
     labels:any=[];
     expand!:any;
   ngOnInit(): void {
    this.GetAllLabels();
+   this.data.currentMessage.subscribe((change)=>{
+    if(change == true){
+      this.data.changeMessage(false);
+    }
+});
   }
 
   GetAllLabels()
@@ -89,6 +96,7 @@ Colors = [ [
   .subscribe(
     (result: any) => 
     {
+      this.data.changeMessage(true);
     console.log(result.message);
     console.log(result.data);
 
@@ -100,6 +108,7 @@ Colors = [ [
   DeleteNote()
   {
     this.noteService.DeleteNote(this.note.noteId).subscribe((result : any) =>{
+      this.data.changeMessage(true);
       console.log(result)
       this.openSnackBar(result.message,'');
     },
@@ -128,6 +137,7 @@ Colors = [ [
     if(this.note.archieve==true)
     {
     this.noteService.UnArchive(this.note.noteId).subscribe((result : any) =>{
+      this.data.changeMessage(true);
         console.log(result)
         this.openSnackBar(result.message,'');
       });
@@ -136,6 +146,7 @@ Colors = [ [
     else
     {
       this.noteService.SetArchive(this.note.noteId).subscribe((result : any) =>{
+        this.data.changeMessage(true);
         console.log(result)
         this.openSnackBar(result.message , '');
       },
@@ -187,6 +198,7 @@ PinNote()
     .subscribe(
       (result: any) => 
       {
+        this.data.changeMessage(true);
       console.log(result.message);
       this.openSnackBar(result.message,'');
   
@@ -200,6 +212,7 @@ PinNote()
     .subscribe(
       (result: any) => 
       {
+        this.data.changeMessage(true);
       console.log(result.message);
       this.openSnackBar(result.message,'');
   
@@ -276,6 +289,7 @@ SetReminder(data:any)
   .subscribe(
     (result: any) => 
     {
+      this.data.changeMessage(true);
     console.log(result.message);
 
     },(error: HttpErrorResponse) => 
@@ -291,6 +305,7 @@ AddLabelToNote(labelName:any)
   .subscribe(
     (status: any) => 
     {
+      this.data.changeMessage(true);
     console.log("Label" +status.data);
     this.noteLabel=status.data;
 
@@ -321,6 +336,7 @@ UploadImage()
   .subscribe(
     (result: any) => 
     {
+      this.data.changeMessage(true);
     console.log(result.message);
 
     },(error: HttpErrorResponse) => {
@@ -335,6 +351,7 @@ RemoveImage()
   .subscribe(
     (result: any) => 
     {
+      this.data.changeMessage(true);
     console.log(result.message);
     this.openSnackBar(result.message,'');
 

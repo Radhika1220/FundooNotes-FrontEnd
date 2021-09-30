@@ -24,10 +24,12 @@ constructor(public dialogRef: MatDialogRef<CollaboratorDialogBoxComponent>,
   ngOnInit(): void {
     console.log(this.data.collab);
     this.GetCollab();
-    // if( this.data.collab != null)
-    // {
-    //   this.emailId=this.data.collab;
-    // }
+    this.data.currentMessage.subscribe((change:any)=>{
+      if(change == true){
+        this.GetCollab();
+        this.data.changeMessage(false);
+      }
+  })
   }
   onNoClick(): void {
     this.dialogRef.close();
@@ -75,14 +77,11 @@ clearSearchField() {
 
     AddCollab(element:any)
   {
-    // console.log(this.data);
-    // console.log(this.data.noteId);
-    // console.log("add collab");
     this.collaboratorService.AddCollaborator(element,this.data.noteId)
     .subscribe(
       (status: any) => 
       {
-        // this.data.changeMessage(true);
+        this.data.changeMessage(true);
         this.ngOnInit();
       console.log(status.notesId);
       this.openSnackBar(status.message,'');
@@ -129,6 +128,7 @@ RemoveCollabs(email:any)
           this.ngOnInit();
           this.openSnackBar(result.message,'');
         console.log(result.data);
+        this.data.changeMessage(true);
         }
         ,(error: HttpErrorResponse) => {
         console.log(error.error.message);
