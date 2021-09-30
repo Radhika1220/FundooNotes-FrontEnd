@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 import { NoteServiceService} from 'src/app/Services/noteservice/note-service.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 @Component({
@@ -16,10 +17,17 @@ export class GetArchiveComponent implements OnInit {
   note:any;
   constructor(private noteService:NoteServiceService,
     private snackBar: MatSnackBar,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    private data: DataserviceService) { }
 
   ngOnInit(): void {
     this.GetArchive();
+    this.data.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.GetArchive();
+        this.data.changeMessage(false);
+      }
+  })
   }
 
   GetArchive()

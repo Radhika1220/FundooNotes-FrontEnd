@@ -4,6 +4,7 @@ import { NoteServiceService} from 'src/app/Services/noteservice/note-service.ser
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
+import { DataserviceService } from 'src/app/Services/DataService/dataservice.service';
 @Component({
   selector: 'app-get-note',
   templateUrl: './get-note.component.html',
@@ -14,10 +15,17 @@ notes!:any[];
 pinned:boolean=true;
   constructor(private noteService:NoteServiceService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private data:DataserviceService) { }
 
   ngOnInit(): void {
     this.GetNotes();
+    this.data.currentMessage.subscribe((change)=>{
+      if(change == true){
+        this.GetNotes();
+        this.data.changeMessage(false);
+      }
+  })
   }
   GetNotes()
   {

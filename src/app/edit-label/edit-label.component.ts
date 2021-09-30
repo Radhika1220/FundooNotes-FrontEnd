@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { NoteServiceService } from '../Services/noteservice/note-service.service';
 import { LabelServiceService } from '../Services/LabelService/label-service.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataserviceService } from '../Services/DataService/dataservice.service';
 @Component({
   selector: 'app-edit-label',
   templateUrl: './edit-label.component.html',
@@ -14,7 +15,8 @@ export class EditLabelComponent implements OnInit {
   constructor(private noteService:NoteServiceService,
     private labelService:LabelServiceService,
     public dialogRef: MatDialogRef<EditLabelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private data1: DataserviceService) { }
   labels:any=[];
   editlabel:any;
   searchField:any;
@@ -46,6 +48,7 @@ export class EditLabelComponent implements OnInit {
    .subscribe(
      (status: any) => 
      {
+      this.data1.changeMessage(true);
       this.  GetAllLabels();
      console.log(status.data);
      },(error: HttpErrorResponse) => {
@@ -69,6 +72,7 @@ export class EditLabelComponent implements OnInit {
     .subscribe(
       (status: any) => 
       {
+        this.data1.changeMessage(true);
         this.  GetAllLabels();
       console.log(status.data);
       },(error: HttpErrorResponse) => {
@@ -84,6 +88,7 @@ export class EditLabelComponent implements OnInit {
    .subscribe(
      (status: any) => 
      {
+      this.data1.changeMessage(true);
       this.  GetAllLabels();
      console.log(status.data);
      },(error: HttpErrorResponse) => {
