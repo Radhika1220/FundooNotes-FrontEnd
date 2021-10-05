@@ -20,6 +20,7 @@ pinned:boolean=true;
 
   ngOnInit(): void {
     this.GetNotes();
+    console.log(this.notes);
     this.data.currentMessage.subscribe((change)=>{
       if(change == true){
         this.GetNotes();

@@ -1,5 +1,8 @@
+<div class="title">PINNED</div>
    <div class="mainDiv">
-    <mat-card [ngStyle]="{'background-color': note.color}" *ngFor="let note of notes">
+       <div *ngFor="let note of notes">
+    <mat-card [ngStyle]="{'background-color': note.color}">
+        <div *ngIf ="note.pin!=true">
         <img src='{{note.image}}'  *ngIf=" note.image != null">
         <div class="contents">
         <div class="row" (click)="openDialog(note)">
@@ -17,6 +20,36 @@
         </div>
     </div>
     <app-icons [note]="note"></app-icons>
+</div>
     </mat-card>
 </div>
+</div>
+
+
+<div class="mainDiv">
+    OTHERS
+    <mat-card [ngStyle]="{'background-color': note.color}" *ngFor="let note of notes">
+        <div *ngIf ="note.pin!=false">
+
+        <img src='{{note.image}}'  *ngIf=" note.image != null">
+        <div class="contents">
+        <div class="row" (click)="openDialog(note)">
+            <h3 style="font-weight:bold;font-size:20px">{{note.title}}</h3>
+          
+ <!-- <i class="material-icons" matTooltip="Pin" *ngIf="!pinned" (click)="PinNote()">push_pin</i>
+ <i class="material-icons" matTooltip="Pin" *ngIf="pinned" (click)="PinNote()" style="color:gray">push_pin</i> -->
+        </div>
+        <div style="margin: 20px;" (click)="openDialog(note)">
+            <p style="font-size:18px">{{note.description}}</p>
+        </div>
+        <div class="reminder" *ngIf="note.remainder != null">
+            <p  class="para"> {{note.remainder}}</p>
+            <i class="material-icons icon-hover" style="margin-bottom: 5px;" (click)="DeleteReminder(note)">close</i>
+        </div>
+    </div>
+    <app-icons [note]="note"></app-icons>
+</div>
+    </mat-card>
+</div>
+
 
